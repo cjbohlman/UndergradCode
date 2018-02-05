@@ -1,0 +1,71 @@
+Module main ()
+
+//Declare constants
+Integer SIZE = 10
+Integer index
+Declare Ineteger scores[SIZE]
+
+//Loop counter to accept scores
+For index = 0 to Size - 1
+	Display "What is Score #" index+1
+	Input scores[index]
+End For
+
+//call the sorting module
+call selectionSort(scores, Size)
+
+For index = 0 to Size -1
+	Display scores[index]
+End For
+
+Declare Integer searchScore
+
+Display "Enter a score to search for"
+Input searchScore
+
+searchScore(scores, searchScore, Size)
+
+End Module
+
+___________________________________________
+
+Module selectionScore(Integer Ref array[], Integer arraySize)
+Declare Integer startScan
+Declare integer minIndex
+Declare Integer minValue
+Declare Integer index
+
+For startScan = 0 to arraysize - 2
+	Set minIndex = startScan
+	Set minValue = array[startScan]
+
+	For idex = startScan + 1 to arraySize - 1
+		If array[index] < minValue Then
+			Set minValue = array[index]
+			Set minIndex = index
+		End If
+	End For
+	
+	call swap(array[minIndex], array[startScan]
+End For
+
+End Module
+
+___________________________________________
+
+Module swap(Integer Ref a, Integer Ref b)
+Declare Integer temp
+Set temp = a
+Set a = b
+Set b = temp
+End Module
+___________________________________________
+
+Module searchScore(Integer Ref array[], Integer Ref searchValue, Integer arraySize
+Declare Integer Index
+	For index = 0 to arraySize -1
+		If array[index] = searchValue
+		Display "Your score was found in score number " +(index + 1)
+		End If
+	End For
+	

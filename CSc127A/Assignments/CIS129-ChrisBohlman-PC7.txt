@@ -1,0 +1,62 @@
+Module main ()
+
+Class  PersonalInformation
+	//Field Declarations
+	Private String name
+	Private String address
+	Private Integer age
+	Private Real phoneNumber
+
+	//Constructor
+	Public Module personalInformation(String nameString, String addressString, Integer ageInt, Real phoneReal)
+		Set nameString = name
+		Set addressString = address
+		Set ageInt = age
+		Set phoneReal = phoneNumber
+	End Module
+
+	//Method definitions
+	Public Module setName (String nameString)
+		Set name = nameString
+	End Module
+
+	Public Module setAddress (String addressString)
+		Set address = addressString
+	End Module
+
+	Public Module setAge (Integer ageInt)
+		Set age = ageInt
+	End Module
+
+	Public Module setPhone (Real phoneReal)
+		Set phoneNumber = phoneReal
+	End Module
+
+	Public Function getName()
+		Return name
+	End Fucntion
+
+	Public Function getAddress()
+		Return address
+	End Function
+
+	Public Function getAge()
+		Return age
+	End Function
+
+	Public Function getPhone()
+		Return phoneNumber
+	End Function
+	
+End Class
+
+Declare PersonalInformation myPersonalInfo
+Set myPersonalInfo = New PersonalInformation()
+
+Declare PersonalInformation parentPersonalInfo
+Set parentPersonalInfo = New PersonalInformation()
+
+Declare PersonalInformation friendPersonalInfo
+Set friendPersonalInfo = New PersonalInformation()
+
+End Module

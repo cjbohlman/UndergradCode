@@ -1,0 +1,48 @@
+int startNumber;
+
+    public RaffleTicketGenerator()
+    {
+        super();
+        startNumber = 0;
+    }
+
+            // Place the second constructor here
+
+
+
+
+
+
+
+    public int qtyIssued()
+    {
+        return nextNumber-startNumber;
+    }
+
+            // Place firstIssued() here.
+
+
+
+
+
+
+
+
+
+            // Place reset() here
+
+
+
+
+
+
+            // Place drawWinner() here
+
+
+
+
+
+
+
+
+} // RaffleTicketGenerator

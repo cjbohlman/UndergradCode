@@ -1,0 +1,80 @@
+/*************************************************************************
+ *  Compilation:  javac Array1.java
+ *  Execution:    java Array1
+ *  author: Odile wolf
+ * date: 4-3
+ * purpose: creating an array and displaying out it works.
+ *************************************************************************/
+// this is used to allow us to use classes in all the libraries of java.io
+import java.io.*;
+
+public class CIS129-ChriBohlman-PC6.java {
+
+  Integer Sizze = 20;
+  
+    public static void main(String[] args) {
+      final int SIZE = 4;
+      
+      //declarations and allocation
+      int[] A = new int[SIZE];
+      //sets the values
+      A[0] = 1;
+      A[1] = 1;
+      A[2] = A[0] + A[1];
+      A[3] = A[2] + A[1];
+      PrintArray(A);
+      System.out.println (+Sizze);
+    }
+    ///////////////////// function
+    public static void PrintArray(int[] A) {
+      //printing
+      for (int i = 0; i <A.length ; i++ ) 
+        System.out.print(A[i] + " ");
+      System.out.println();
+    }
+}
+
+
+/*Declare 
+
+Module main ()
+ Declare String uAnswers[Size]
+ Declare Integer index
+
+ For index = 0 to Size-1
+  Display "Enter anser to question ", index+1
+  Input uAnswers[index]
+ End For
+
+ Set total = grading(uAnswers, Size)
+
+ If total >= 15
+  Display "Congratulations, you passsed the test"
+  Display "You got ", numberRight, "questions right"
+  Display "You got ", 20 - total, "questions wrong"
+
+ Else
+  Display "I am sorry, you failed the test"
+  Display "You got ", numberRight, "questions right"
+  Display "You got ", 20 - total, "questions wrong"
+ End If
+
+
+
+End Module
+
+Function Integer grading(String array[], Integer arraySize)
+ Declare String cAnswers[Size] = "B", "D", "A", "A", "C", "A", "B", "A", "C", "D", "B", "C", "D", "A", "D", "C", "C", "B", "D", "A"
+ Declare Integer numberRight = 0
+ Declare Integer index
+
+ For index = 0 to Size-1
+  If uAnswers[index2] = cAnswers[index2]
+   numberRight = numberRight + 1
+  Else
+   Display "You got question ", index+1," wrong."
+  End If
+ End For
+ Return numberRight
+End Function
+*/

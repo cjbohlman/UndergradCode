@@ -1,0 +1,2 @@
+spellcheck.o :	
+	gcc -Wall -c spellcheck.c

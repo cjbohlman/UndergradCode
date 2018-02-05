@@ -1,0 +1,43 @@
+class Points
+{
+    public static void main (String [] args)
+    {
+        TwoDPoint p2 = new TwoDPoint(0.1, 0.2);
+
+        System.out.printf("The 2D point is at (%.2f,%.2f).\n",
+                          p2.getX(), p2.getY());
+
+        ThreeDPoint p3 = new ThreeDPoint(1.5, 4.5, 7.5);
+
+        System.out.printf("The 3D point is at (%.2f,%.2f,%.2f).\n",
+                          p3.getX(), p3.getY(), p3.getZ());
+    }
+}  // Points
+
+        // TwoDPoint:  A simple class whose objects represent points in
+        // two-dimensional space.
+
+class TwoDPoint
+{
+    double x,y;
+
+    public TwoDPoint (double x, double y)
+    {
+        this.x = x;  this.y = y;
+    }
+
+    public double getX()
+    {
+        return x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
+} // TwoDPoint
+
+
+        // Create your ThreeDPoint class here!
+
+

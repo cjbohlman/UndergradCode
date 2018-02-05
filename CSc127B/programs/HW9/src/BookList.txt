@@ -1,0 +1,34 @@
+Chris Bohlman, CSC 127B-001B
+Homework #8 - BookList
+Instructor: Patrick Homer
+TA: Nathaniel Hendrix
+Due Date: 11/4/2016
+
+
+
+This collection of classes was written in order to generate and modify a list of book titles 
+and the respective authors, if there are any.
+The classes include the BookList, ALinkedList, Book, and LinkNode classes
+
+Initially, a program is given a text file and told to make a booklist with that. For every 
+book object that is imported into the program, a LinkNode is made that holds a Book object, 
+and the Book object is set a title and has the authors set. The books are arranged in order by 
+title. If there are any authors, they are arranged in order (alphabetically) as well. They are 
+all sorted into a linked list from the ALinkedList class.
+
+From there, there are several methods used to modify the linked list. You can find a certain 
+element in the linked list, remove a certain element, and insert an element in the linked list.
+Finally, there are options to output the entire linked list as a string, either with titles 
+only or with titles and authors.
+
+The linked list as a whole is based off of the made-with-generics ALinkedList class, which 
+holds nodes from the LinkNdes class, which hold books from the Book class, which hold
+titles and authors.
+
+I used JDE 8.0_91, wrote the program through Eclipse, and was on a Windows
+10 laptop. To test this program, all submitted classes must be in the same folder as each 
+other.
+
+I hope there aren't any bugs in this system. None known, but if there are, it probably comes 
+from my confusion with generics. Because I'm pretty confused with generics.
+And this program had a lot of them.

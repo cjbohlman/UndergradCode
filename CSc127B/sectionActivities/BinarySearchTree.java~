@@ -1,0 +1,34 @@
+public class BinarySearchTree
+             <E extends Comparable<E>>
+{
+   private TreeNode<E> root;
+
+   public void add( E ) {
+      root = addHelper( item, root );
+   } // add
+
+   private TreeNode<E> addHelper( E item,
+                         TreeNode<E> current )
+   {
+      TreeNode<E> temp;
+
+      // base case(s)
+      if ( current == null ) {
+         temp = new TreeNode( item );
+         return temp;
+      }
+      // Recursive step
+      if ( current.getData().compareTo( item) > 0) {
+         // go left
+         temp = addHelper( item, current.getLeft());
+         current.setLeft( temp );
+         return current;
+      }
+      else {
+         // go right
+         temp = addHelper( item, current.getRight());
+         current.setRight( temp );
+         return current;
+      }
+   }
+} // BinarySearchTree class

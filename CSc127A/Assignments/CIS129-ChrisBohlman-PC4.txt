@@ -1,0 +1,19 @@
+//Declare a variable to hold each amount enetered by collector every day
+Declare Integer amount
+
+//Accumulator variable, initialized
+Declare Integer cumulative = 0
+
+//Make a counter variable
+Declare variable counter
+
+//Explain program
+Display "This program keeps a running total of how many bugs were collected for seven days."
+
+For counter = 1 To 7
+	Display "How many bugs were collected on day ",counter,"?"
+	Input amount
+	Set cumulative = cumulative + amount
+End For
+
+Display "The amount of bugs collected over 7 days is ",cumulative,"."

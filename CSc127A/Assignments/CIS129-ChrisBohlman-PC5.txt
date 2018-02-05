@@ -1,0 +1,58 @@
+PRE TEST:
+
+Declare Double hourlyPay
+Declare Integer hoursWorked
+Declare Double employeePay
+
+Display "How many hours did the employee work?"
+Input hoursWorked
+
+Display "What is their hourly pay rate?"
+Input hourlyPay
+
+while (0<hoursWorked AND hoursWorked<40 AND 7.5<hourlyPay AND hourlyPay<18.25)
+	
+	employeePay = hoursWorked * hourlyPay
+	Display "The pay for this employee is " employeePay
+
+	Display "Let's do it again."
+
+	Display "How many hours did the employee work?"
+	Input hoursWorked
+
+	Display "What is their hourly pay rate?"
+	Input hourlyPay
+
+End While
+
+
+
+POST TEST:
+
+Declare Double hourlyPay
+Declare Integer hoursWorked
+Declare Double employeePay
+
+Display "How many hours did the employee work?"
+Input hoursWorked
+
+Display "What is their hourly pay rate?"
+Input hourlyPay
+
+Do
+
+	employeePay = hoursWorked * hourlyPay
+
+	Display "The pay for this employee is " employeePay
+
+	Display "Let's do it again."
+
+	Display "How many hours did the employee work?"
+	Input hoursWorked
+
+	Display "What is their hourly pay rate?"
+	Input hourlyPay
+
+Until (0>hoursWorked OR hoursWorked>40 OR 7.5>hourlyPay OR hourlyPay>18.25)
+	
+

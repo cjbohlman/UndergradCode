@@ -1,0 +1,27 @@
+Title:  Voyager In Night
+Author: Cherryh, C. J.
+Title:  C Programming Language, The
+Author: Kernighan, Brian W.
+Author: Ritchie, Dennis M.
+Title:  Man Who Walked Through Time, The
+Author: Fletcher, Colin
+Title:  Five Fates
+Author: Anderson, Poul
+Author: Dickson, Gordon R.
+Author: Ellison, Harlan
+Author: Herbert, Frank
+Author: Laumer, Keith
+Title:  Pollinators Of Eden, The
+Author: Boyd, John
+Title:  War On The Nile: Britain, Egypt And The Sudan, 1882-1898
+Author: Barthorp, Michael
+Title:  More Growing Up Catholic
+Author: Davis, Richard
+Author: Kelly, Maureen
+Author: Meara, Mary
+Author: Stone, Jeffrey
+Title:  Introduction To Assembler Language Programming
+Author: Feingold, Carl
+Title:  Flashing Swords! #5: Demons And Daggers
+Author: Carter, Lin
+

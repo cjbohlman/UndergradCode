@@ -1,0 +1,193 @@
+Lab 4 Test Case			
+					
+Input	
+n/a
+
+output
+This program generates rent slips
+--------------------------------------------
+Jane Doe, Apt 1- January rent due: $$100.00 on January 1st.
+Late fees will be collected on January 5th.
+--------------------------------------------
+Jane Doe, Apt 1- February rent due: $$100.00 on February 1st.
+Late fees will be collected on February 5th.
+--------------------------------------------
+Jane Doe, Apt 1- March rent due: $$100.00 on March 1st.
+Late fees will be collected on March 5th.
+--------------------------------------------
+Jane Doe, Apt 1- April rent due: $$100.00 on April 1st.
+Late fees will be collected on April 5th.
+--------------------------------------------
+Jane Doe, Apt 1- May rent due: $$100.00 on May 1st.
+Late fees will be collected on May 5th.
+--------------------------------------------
+Jane Doe, Apt 1- June rent due: $$100.00 on June 1st.
+Late fees will be collected on June 5th.
+--------------------------------------------
+Jane Doe, Apt 1- July rent due: $$100.00 on July 1st.
+Late fees will be collected on July 5th.
+--------------------------------------------
+Jane Doe, Apt 1- August rent due: $$100.00 on August 1st.
+Late fees will be collected on August 5th.
+--------------------------------------------
+Jane Doe, Apt 1- September rent due: $$100.00 on September 1st.
+Late fees will be collected on September 5th.
+--------------------------------------------
+Jane Doe, Apt 1- October rent due: $$100.00 on October 1st.
+Late fees will be collected on October 5th.
+--------------------------------------------
+Jane Doe, Apt 1- November rent due: $$100.00 on November 1st.
+Late fees will be collected on November 5th.
+--------------------------------------------
+Jane Doe, Apt 1- December rent due: $$100.00 on December 1st.
+Late fees will be collected on December 5th.
+--------------------------------------------
+John Deere, Apt 2- January rent due: $$200.00 on January 1st.
+Late fees will be collected on January 5th.
+--------------------------------------------
+John Deere, Apt 2- February rent due: $$200.00 on February 1st.
+Late fees will be collected on February 5th.
+--------------------------------------------
+John Deere, Apt 2- March rent due: $$200.00 on March 1st.
+Late fees will be collected on March 5th.
+--------------------------------------------
+John Deere, Apt 2- April rent due: $$200.00 on April 1st.
+Late fees will be collected on April 5th.
+--------------------------------------------
+John Deere, Apt 2- May rent due: $$200.00 on May 1st.
+Late fees will be collected on May 5th.
+--------------------------------------------
+John Deere, Apt 2- June rent due: $$200.00 on June 1st.
+Late fees will be collected on June 5th.
+--------------------------------------------
+John Deere, Apt 2- July rent due: $$200.00 on July 1st.
+Late fees will be collected on July 5th.
+--------------------------------------------
+John Deere, Apt 2- August rent due: $$200.00 on August 1st.
+Late fees will be collected on August 5th.
+--------------------------------------------
+John Deere, Apt 2- September rent due: $$200.00 on September 1st.
+Late fees will be collected on September 5th.
+--------------------------------------------
+John Deere, Apt 2- October rent due: $$200.00 on October 1st.
+Late fees will be collected on October 5th.
+--------------------------------------------
+John Deere, Apt 2- November rent due: $$200.00 on November 1st.
+Late fees will be collected on November 5th.
+--------------------------------------------
+John Deere, Apt 2- December rent due: $$200.00 on December 1st.
+Late fees will be collected on December 5th.
+--------------------------------------------
+Jane Smith, Apt 3- January rent due: $$300.00 on January 1st.
+Late fees will be collected on January 5th.
+--------------------------------------------
+Jane Smith, Apt 3- February rent due: $$300.00 on February 1st.
+Late fees will be collected on February 5th.
+--------------------------------------------
+Jane Smith, Apt 3- March rent due: $$300.00 on March 1st.
+Late fees will be collected on March 5th.
+--------------------------------------------
+Jane Smith, Apt 3- April rent due: $$300.00 on April 1st.
+Late fees will be collected on April 5th.
+--------------------------------------------
+Jane Smith, Apt 3- May rent due: $$300.00 on May 1st.
+Late fees will be collected on May 5th.
+--------------------------------------------
+Jane Smith, Apt 3- June rent due: $$300.00 on June 1st.
+Late fees will be collected on June 5th.
+--------------------------------------------
+Jane Smith, Apt 3- July rent due: $$300.00 on July 1st.
+Late fees will be collected on July 5th.
+--------------------------------------------
+Jane Smith, Apt 3- August rent due: $$300.00 on August 1st.
+Late fees will be collected on August 5th.
+--------------------------------------------
+Jane Smith, Apt 3- September rent due: $$300.00 on September 1st.
+Late fees will be collected on September 5th.
+--------------------------------------------
+Jane Smith, Apt 3- October rent due: $$300.00 on October 1st.
+Late fees will be collected on October 5th.
+--------------------------------------------
+Jane Smith, Apt 3- November rent due: $$300.00 on November 1st.
+Late fees will be collected on November 5th.
+--------------------------------------------
+Jane Smith, Apt 3- December rent due: $$300.00 on December 1st.
+Late fees will be collected on December 5th.
+--------------------------------------------
+John Brown, Apt 4- January rent due: $$400.00 on January 1st.
+Late fees will be collected on January 5th.
+--------------------------------------------
+John Brown, Apt 4- February rent due: $$400.00 on February 1st.
+Late fees will be collected on February 5th.
+--------------------------------------------
+John Brown, Apt 4- March rent due: $$400.00 on March 1st.
+Late fees will be collected on March 5th.
+--------------------------------------------
+John Brown, Apt 4- April rent due: $$400.00 on April 1st.
+Late fees will be collected on April 5th.
+--------------------------------------------
+John Brown, Apt 4- May rent due: $$400.00 on May 1st.
+Late fees will be collected on May 5th.
+--------------------------------------------
+
+Expected output
+John Brown, Apt 4- June rent due: $$400.00 on June 1st.
+Late fees will be collected on June 5th.
+--------------------------------------------
+John Brown, Apt 4- July rent due: $$400.00 on July 1st.
+Late fees will be collected on July 5th.
+--------------------------------------------
+John Brown, Apt 4- August rent due: $$400.00 on August 1st.
+Late fees will be collected on August 5th.
+--------------------------------------------
+John Brown, Apt 4- September rent due: $$400.00 on September 1st.
+Late fees will be collected on September 5th.
+--------------------------------------------
+John Brown, Apt 4- October rent due: $$400.00 on October 1st.
+Late fees will be collected on October 5th.
+--------------------------------------------
+John Brown, Apt 4- November rent due: $$400.00 on November 1st.
+Late fees will be collected on November 5th.
+--------------------------------------------
+John Brown, Apt 4- December rent due: $$400.00 on December 1st.
+Late fees will be collected on December 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- January rent due: $500.00 on January 1st.
+Late fees will be collected on January 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- February rent due: $500.00 on February 1st.
+Late fees will be collected on February 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- March rent due: $500.00 on March 1st.
+Late fees will be collected on March 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- April rent due: $500.00 on April 1st.
+Late fees will be collected on April 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- May rent due: $500.00 on May 1st.
+Late fees will be collected on May 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- June rent due: $500.00 on June 1st.
+Late fees will be collected on June 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- July rent due: $500.00 on July 1st.
+Late fees will be collected on July 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- August rent due: $500.00 on August 1st.
+Late fees will be collected on August 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- September rent due: $500.00 on September 1st.
+Late fees will be collected on September 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- October rent due: $500.00 on October 1st.
+Late fees will be collected on October 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- November rent due: $500.00 on November 1st.
+Late fees will be collected on November 5th.
+--------------------------------------------
+Drawyne 'The Rock' Johnson, Apt 5- December rent due: $500.00 on December 1st.
+Late fees will be collected on December 5th.
+
+
+Pass/Fail
+PASS

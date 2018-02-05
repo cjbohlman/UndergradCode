@@ -1,0 +1,94 @@
+/*-------------------------------------------------------------------
+ Class Prog2
+ Chris Bohlman
+ Inherits from: None
+ Package Contained In: None
+ 
+ Purpose: Creates a program that counds the number of words, characters, and lines of text files
+ Instance Variables: BufferedReader br
+ Classs Methods:
+ Instance Methods:
+ 
+ TO DO: Accept more than one input on command line
+ -------------------------------------------------------------------*/
+
+import java.io.*;
+
+public class Prog22 {
+  
+  private static BufferedReader br = null; 
+  private static String sourceName[] = null;
+  private static int numberLines = 0;
+  private static int numberWords = 0;
+  private static int numberChars = 0;
+  
+  public static void main (String [] args) throws Exception{
+    try{
+      int totalWords = 0;
+      int totalLines = 0;
+      int totalChars = 0;
+      
+      if (args.length < 1) {
+        BufferedReader input = new BufferedReader (new InputStreamReader(System.in));
+        System.out.println("This program determines the quantity of lines, words, and bytes in a file or files that you specify.");
+        System.out.println("Please enter one or more file names, comma-separated: ");
+        String dataFiles = input.readLine();
+        
+        sourceName= dataFiles.split(",");
+      }
+      else{
+        sourceName = new String[args.length];
+        for (int i=0; i < args.length; i++){
+          sourceName[i] = args[i];
+        }
+      }
+      System.out.println(" Lines     Words     Bytes");
+      System.out.println("--------  --------  --------");
+      for (int i=0; i < sourceName.length; i++) {
+        br = new BufferedReader(new FileReader(sourceName[i]));
+        Count();
+        System.out.println("   "+numberLines+"         "+numberWords+"         "+numberChars+"       "+sourceName[i]+" ");
+        
+        totalWords = totalWords + numberWords;
+        totalLines = totalLines + numberLines;
+        totalChars = totalChars + numberChars;
+        
+        numberLines = 0;
+        numberWords = 0;
+        numberChars = 0;
+      }
+      System.out.println("--------------------------------------------");
+      System.out.println("   "+totalLines+"         "+totalWords+"         "+totalChars+"       Totals"); 
+      br.close();
+    }catch(Exception e){
+      e.printStackTrace();}
+  }
+  
+  public static void Count() throws Exception{
+    char thisChar;
+    char space = ' ';
+    try{
+      boolean inWord = false;
+      while ((thisChar = (char)br.read()) != (char)-1) {
+        if (thisChar != -1) { 
+          numberChars++;
+          if (thisChar == ' '){
+            inWord = false;
+          }
+          else if (thisChar == '\n'||thisChar == '\r'){
+            inWord = false;
+            numberLines++;
+          }
+          else if(inWord){
+            continue;
+          }
+          else{
+           numberWords++;
+           inWord = true;
+          }
+        }
+      }
+    }catch(Exception e){
+      e.printStackTrace();}
+  }
+}

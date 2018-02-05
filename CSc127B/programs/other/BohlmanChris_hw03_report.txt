@@ -1,0 +1,33 @@
+Here is the .tar file for HW#3, containing all of my programs.
+
+Report:
+
+Programs 1.1, 1.2, 1.3, and 1.4 uses single precision floating points to calculate an integral, first by changing the number of nbins from 2 to 2^22, and then by using the left hand rule, 
+midpoint rule, trapezoid rule, and Simpsons rule to calculate the approximate value of the integral. This is accomplished through use of a for loop for the powers of two, and then a for
+loop calculating the value of every little rectangle/trapezoid/ small piece of the integral. I tested this by cross checking every method with calculations done by hand, which were 
+accurate in telling me if my program was right. No input is needed, and the output is structured with the:
+number of nbins 	value of the integral
+for each method.
+My results show that the more nbins an integral has, the closer it is to the actual value of the integral. If I did not know the solution to the integral, I would plot the value of the 
+integral vs the number of nbins, and then see where the value of the integral converges to.
+In terms of the error vs number of nbins graphing, I believe my values were skewed when the number of nbins went up because floating point numbers weren't large enough to accurately report 
+the data, so rounding errors caused issues. When doubles were used instead of floating point numbers, the numbers did not skew at all, and the graphs looked more accurate. If I further 
+increased the number of nbins, I would expect the value of the error to converge to 0.
+
+
+Program 2 investigated the error versus the number of bins versus the method of integration. Again, for the integral, the number of bins was increased incrementally from 2 to 2^22, and 
+the left hand rule, midpoint rule, trapezoid rule, and Simpsons rule were used to calculate the approximate value of the integral. From the graph of the error in the value of the integral 
+versus the number of bins, the left hand rule was the least accurate, followed by the midpoint rule, the trapezoid rule, and with Simpsons rule being the most accurate. In fact, Simpsons 
+rule was so accurate, I couldn't even get it to display in the graph, as the error was minuscule. Therefore, the power of the left hand rule that the error scales to was, I believe, -1. 
+The power of the trapezoid rule was about -2, the power of the midpoint rule was slightly <-2, and the power of Simpsons rule was approximately negative infinity. Because error is supposed to 
+decrease with an increase in the number of bins, I would say that my results make sense.
+
+Program 3 used the midpoint formula to estimate the value of an integral. I then had to use a guessed value of the integral to plot error vs number of bins, similar to the previous 
+problems. However, I could not solve the integral to figure out the actual value, so I had to see where the values of the integral converged the more nbins there were, and I used that as 
+my actual value of the integral. The accuracy of my determined answer probably impacts the graph of errors a lot, but regardless, it would still show which answers were way off the chosen 
+value and which answers were closer. If I wanted the integral to .05% accuracy, I would probably use the ________ bin size. If I reduced my bin size by a factor of 10, I would imagine my 
+accuracy would be .0005%. Adding my other midpoint graph to this graph, I would say that they both have approximately the same error power of -2, therefore, the midpoint graphs stay fairly 
+constant across integrals. Therefore, it can be assumed that midpoints usually lead to this degree of error within midpoint integrals.
+
+Wrap everything in a .tar file
+

@@ -1,0 +1,115 @@
+Display "Let's plan your week long trip."
+Display "How much oney do you have?"
+Input moneyValue
+
+Display "Do you want to fly somewhere international?"
+	If input = y then (
+		Display "You can go to Florence, Italy."
+		Display "Would you like stay in a hotel ($150 a night)?"
+			If input == y (
+				set planeTicket = 1500
+				set hotelPrice = 150 * 7
+				set tripCost = planeTicket + hotelPrice
+				set leftoverMoney = moneyValue - tripCost
+				
+					If leftoverMoney>=0 then (
+						Display "Great! Your trip will cost " tripCost "."
+						Display "Enjoy your hotel stay at Florence!"
+					)
+					Else (
+						Display "Your trip will cost " tripCost "."
+						Display "Sorry, you don't have enough money to make this trip.
+					)
+			)
+
+			Else (
+				Display "Looks like you're staying in a hostel ($20 a night)."
+				set planeTicket = 1500
+				set hostelPrice = 20 * 7
+				set tripCost = planeTicket + hostelPrice
+				set leftoverMoney = moneyValue - tripCost
+					
+					If leftoverMoney>=0 then (
+						Display "Great! Your trip will cost " tripCost "."
+						Display "Enjoy your hostel stay at Florence!"
+					)
+					Else (
+						Display "Your trip will cost " tripCost "."
+						Display "Sorry, you don't have enough money to make this trip.
+					)
+			)
+	)
+	
+	Else (
+		Display "Would you like to vacation in the outdoors?"
+			If input = y Then (
+				Display "Would you like to camp?"
+					If input = y Then (
+						set gasCost = 100
+						set campRentCost = 20 * 7
+						set tripCost = gasCost + campRentCost
+						set leftoverMoney = moneyValue - tripCost
+					
+						If leftoverMoney>=0 then (
+							Display "Great! Your trip will cost " tripCost "."
+							Display "Enjoy your camping!"
+						)
+
+						Else (
+							Display "Your trip will cost " tripCost "."
+							Display "Sorry, you don't have enough money to make this trip.
+						)
+					)
+
+					Else ( 
+						Display "Looks like you're kayaking, then.
+						
+						set gasCost = 100
+						set tripCost = gasCost
+						set leftoverMoney = moneyValue - tripCost
+					
+						If leftoverMoney>=0 then (
+							Display "Great! Your trip will cost " tripCost "."
+							Display "Enjoy your kayaking! Beware of mosquitos galore."
+						)
+						Else (
+							Display "Your trip will cost " tripCost "."
+							Display "Sorry, you don't have enough money to make this trip.
+						)
+					)
+
+			Else (
+				Display "You want to stay indoors, then."
+				Display "Would you like to stay at a nearby resort?
+					If input = y Then (
+						set tripCost = 200 * 7
+						set leftoverMoney = moneyValue - tripCost
+					
+						If leftoverMoney>=0 then (
+							Display "Great! Your trip will cost " tripCost "."
+							Display "Enjoy your staycation!"
+						)
+
+						Else (
+							Display "Your trip will cost " tripCost "."
+							Display "Sorry, you don't have enough money to make this trip.
+						)
+					)
+					Else (
+						Display "Looks like you have to stay with your parents."
+						set gasCost = 100
+						set tripCost = gasCost
+						set leftoverMoney = moneyValue - tripCost
+					
+						If leftoverMoney>=0 then (
+							Display "Great! Your trip will cost " tripCost "."
+							Display "Enjoy your kayaking!"
+						)
+						Else (
+							Display "Your trip will cost " tripCost "."
+							Display "Sorry, you don't have enough money to make this trip.
+						)
+					)
+			)
+	)
+ 

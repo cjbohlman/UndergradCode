@@ -1,0 +1,157 @@
+// CSc 127B Fall 2016 Section 12 Part I (McCann)
+
+class LLTiming
+{
+    final static long BILLION = 1000000000;  // # of nanoseconds in a second
+
+
+    public static LLNode<Integer> prepend (LLNode<Integer> head, int item)
+    {
+        LLNode<Integer> newNode = new LLNode<Integer> (item);
+
+        newNode.setNext(head);
+
+        return newNode;
+    }
+
+
+    public static LLNode<Integer> appendIterative (LLNode<Integer> head,
+                                                   int item)
+    {
+        LLNode<Integer> newNode = new LLNode<Integer> (item);
+
+        newNode.setNext(null);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            LLNode<Integer> fore = head, aft = null;
+
+            while (fore != null) {
+                aft = fore;
+                fore = fore.getNext();
+            }
+
+            aft.setNext(newNode);
+        }
+
+        return head;
+    }
+
+
+    public static LLNode<Integer> appendRecursive (LLNode<Integer> head,
+                                                   int item)
+    {
+                // Base Case:  Create a node for the new value.
+        if (head == null) {
+            LLNode<Integer> newNode = new LLNode<Integer> (item);
+            newNode.setNext(null);
+            return newNode;
+        }
+
+                // General Case: Attach the value further down the list.
+        head.setNext(appendRecursive(head.getNext(),item));
+
+        return head;
+    }
+
+
+            // Helpful for debugging!
+    public static String toString (LLNode<Integer> head)
+    {
+/*
+        if (head == null) return "()";
+
+        LLNode<Integer> temp = head;
+        String str = "";
+
+        while (temp != null) {
+            str += "(" + temp.getData().toString() + ")";
+            temp = temp.getNext();
+        }
+
+        return str;
+*/
+        return "";
+    }
+
+            // Get the current system time
+    public static long startTiming ()
+    {
+        System.gc();              // Try to avoid a mid-op garbage collection
+        return (System.nanoTime());
+    }
+
+
+            // Get the elapsed time since the given clock value
+    public static double stopTiming (long startingTime)
+    {
+        long elapsedTime = System.nanoTime() - startingTime;
+        return (1.0 * elapsedTime / BILLION);    // return seconds
+    }
+
+
+    public static void main (String [] args)
+    {
+        LLNode<Integer> head; // reference to the first node of the list
+        int listSize = 0;     // # of items in the final list(s)
+        long startTime;       // system time when a list was started
+        double seconds;       // execution time required to build the list
+
+
+        System.out.println("\nThis program compares the time required to "
+                         + "prepend, append (iteratively),\nand append "
+                         + "(recursively) the same number of nodes to an "
+                         + "initially empty\nlinked list.\n");
+
+        if (args.length < 1) {
+            System.out.println("\nUsage: java LLTiming <final list size>\n");
+            System.exit(1);
+        } else {
+            listSize = Integer.parseInt(args[0]);
+        }
+
+                // Prepend n items to a new LL
+
+        head = null;
+        System.out.printf("               Prepending ");
+        startTime = startTiming();
+        for (int i = 0; i < listSize; i++) {
+            head = prepend(head,i);
+        }
+        seconds = stopTiming(startTime);
+        System.out.printf(listSize + " nodes required "
+                        + "%7.3f seconds.\n", seconds);
+        System.out.println("                          List content: "
+                         + toString(head));
+
+                // Append (iteratively) n items to a new LL
+
+        head = null;
+        System.out.printf("  Appending (iteratively) ");
+        startTime = startTiming();
+        for (int i = 0; i < listSize; i++) {
+            head = appendIterative(head,i);
+        }
+        seconds = stopTiming(startTime);
+        System.out.printf(listSize + " nodes required "
+                        + "%7.3f seconds.\n", seconds);
+        System.out.println("                          List content: "
+                         + toString(head));
+
+                // Append (recursively) n items to a new LL
+
+        head = null;
+        System.out.printf("  Appending (recursively) ");
+        startTime = startTiming();
+        for (int i = 0; i < listSize; i++) {
+            head = appendRecursive(head,i);
+        }
+        seconds = stopTiming(startTime);
+        System.out.printf(listSize + " nodes required "
+                        + "%7.3f seconds.\n", seconds);
+        System.out.println("                          List content: "
+                         + toString(head));
+    }
+
+} // LLTiming

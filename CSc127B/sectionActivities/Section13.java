@@ -1,0 +1,277 @@
+/* Section13.java.
+ * Used by Parts II and III of Section 13, CSc 127B, Fall 2016 (McCann).
+ *
+ * Expected Output:
+ *
+ * Part II's testing output:
+ * 
+ *  tree1 has 0 leaf/leaves.
+ *  tree2 has 1 leaf/leaves.
+ *  tree3 has 1 leaf/leaves.
+ *  tree4 has 4 leaf/leaves.
+ * 
+ * 
+ * Part III's testing output:
+ * 
+ *  tree1's Inorder Traversal:  
+ *  tree2's Inorder Traversal:  2 
+ *  tree3's Inorder Traversal:  100 200 300 400 500 
+ *  tree4's Inorder Traversal:  35 40 45 50 55 60 65
+ */
+
+import java.util.Iterator;
+import java.util.Stack;
+import java.util.NoSuchElementException;
+
+public class Section13
+{
+  public static void main (String[] args)
+  {
+    BinarySearchTree<Integer> tree1 = null, tree2 = null,
+      tree3 = null, tree4 = null;
+    
+    // Create four BSTs for testing
+    
+    tree1 = new BinarySearchTree<Integer>();
+    
+    tree2 = new BinarySearchTree<Integer>();
+    tree2.add(2);
+    
+    tree3 = new BinarySearchTree<Integer>();
+    tree3.add(100);    // 100
+    tree3.add(200);    //    200
+    tree3.add(300);    //       300
+    tree3.add(400);    //          400
+    tree3.add(500);    //             500
+    
+    tree4 = new BinarySearchTree<Integer>();
+    tree4.add(50);
+    tree4.add(40);     //         50
+    tree4.add(60);     //    40        60
+    tree4.add(35);     //  35  45    55  65
+    tree4.add(45);
+    tree4.add(55);
+    tree4.add(65);
+    
+    
+    System.out.println("\nPart II's testing output:\n");
+    
+    System.out.println("\ttree1 has " + tree1.countLeaves() 
+                         + " leaf/leaves.");
+    System.out.println("\ttree2 has " + tree2.countLeaves()
+                         + " leaf/leaves.");
+    System.out.println("\ttree3 has " + tree3.countLeaves()
+                         + " leaf/leaves.");
+    System.out.println("\ttree4 has " + tree4.countLeaves()
+                         + " leaf/leaves.");
+    
+    
+     System.out.println("\n\nPart III's testing output:\n");
+     
+     // Note the "for each" loops, which we can use because
+     // of the presence of an iterator in BinarySearchTree!
+     
+     System.out.print("\ttree1's Inorder Traversal:  ");
+     for (int i : tree1) {                // for each Integer in the tree...
+     System.out.print(i + " ");       // ...print it!
+     }
+     System.out.println();
+     
+     System.out.print("\ttree2's Inorder Traversal:  ");
+     for (int i : tree2) {
+     System.out.print(i + " ");
+     }
+     System.out.println();
+     
+     System.out.print("\ttree3's Inorder Traversal:  ");
+     for (int i : tree3) {
+     System.out.print(i + " ");
+     }
+     System.out.println();
+     
+     System.out.print("\ttree4's Inorder Traversal:  ");
+     for (int i : tree4) {
+     System.out.print(i + " ");
+     }
+     System.out.println('\n');
+     
+  }
+}
+
+
+class BinarySearchTree< E extends Comparable<E> > implements Iterable<E>
+{
+  protected TreeNode<E> root;
+  
+  public BinarySearchTree ()
+  {
+    root = null;
+  }
+  
+  public void add (E newData)
+  {
+    root = addHelper(root, newData);
+  }
+  
+  private TreeNode<E> addHelper (TreeNode<E> current, E newData)
+  {
+    TreeNode<E> temp;
+    if (current == null) {              // need to create a new subtree
+      temp = new TreeNode<E>(newData);
+      return temp;
+    }
+    else if (current.getData().compareTo(newData) > 0) {   // add on left
+      temp = addHelper(current.getLeft(), newData);
+      current.setLeft( temp );
+      return current;
+    } else {                                         // add on right
+      temp = addHelper(current.getRight(), newData);
+      current.setRight( temp );
+      return current;
+    }
+    //return node;
+  } 
+  
+  // inOrder() is obsolete, now that we have InorderIterator!
+  // We've left it here because bits are cheap.
+  
+  public void inOrder ()
+  {
+    inOrder(root);
+  }
+  
+  private void inOrder (TreeNode<E> node)
+  {
+    if (node != null) {
+      inOrder(node.getLeft());
+      System.out.print(node.getData().toString() + " ");
+      inOrder(node.getRight());
+    }
+  }
+  
+  
+  // ===== Code for Part II =====
+  
+  public int countLeaves()
+  {
+    return countingLeaves(root, 0);  // STUB!
+  }
+  
+  private int countingLeaves(TreeNode<E> node, int count) {
+    
+    if (node == null) return count;
+    
+    if (node.getLeft() == null && node.getRight() == null) {
+      return ++count;
+    }
+    count  = count + countingLeaves(node.getLeft(), 0);
+    count += countingLeaves(node.getRight(), 0);
+    return count;
+  }
+  
+  
+  
+  
+  
+  // ===== Code for Part III =====
+  
+  public Iterator<E> iterator()
+  {
+    return new InorderIterator();
+  }
+  
+  private class InorderIterator implements Iterator<E>
+  {
+    private Stack<TreeNode<E>> nodeStack;   // history of little brothers
+    private TreeNode<E>        currentNode; // place to start next time
+    
+    public InorderIterator()
+    {
+      nodeStack = new Stack<TreeNode<E>>();
+      currentNode = root;
+    }
+    
+    public boolean hasNext()
+    {
+      if (nodeStack.isEmpty() != true || currentNode != null) return true;
+
+      else return false;  // STUB!
+    }
+    
+    public E next()
+    {
+      TreeNode<E> nextNode = null;  // next node in the traversal
+      
+      while(currentNode != null) {
+        nodeStack.push(currentNode);
+        currentNode = currentNode.getLeft();
+      }
+      
+      if(nodeStack.isEmpty() != true) {
+        nextNode = nodeStack.pop();
+        currentNode = nextNode.getRight();
+        
+      }
+      
+      else throw new NoSuchElementException();
+      
+      return nextNode.getData(); // STUB!
+    }
+    
+    // remove() is required to exist (by the Iterator interface
+    // definition) but there's no requirement that it do anything!
+    
+    public void remove()
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+  } // InorderIterator
+  
+  
+  
+  class TreeNode<E>
+  {
+    E             data;       
+    TreeNode<E> leftChild,  
+      rightChild; 
+    
+    public TreeNode (E newData)
+    {
+      data = newData;
+      leftChild = rightChild = null;
+    }
+    
+    public void setData( E someData )
+    {
+      data = someData;
+    }
+    
+    public E getData()
+    {
+      return data;
+    }
+    
+    public void setLeft( TreeNode<E> newLeft )
+    {
+      leftChild = newLeft;
+    }
+    
+    public TreeNode<E> getLeft()
+    {
+      return leftChild;
+    }
+    
+    public void setRight( TreeNode<E> newRight )
+    {
+      rightChild = newRight;
+    }
+    
+    public TreeNode<E> getRight()
+    {
+      return rightChild;
+    }
+    
+  }
+  
+}

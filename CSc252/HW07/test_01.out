@@ -1,0 +1,127 @@
+4
+0
+1
+44
+40
+195
+6
+210
+-44100
+sumN_DEBUG: len=16 val=0
+sumN_DEBUG: len=8 val=0
+sumN_DEBUG: len=4 val=0
+sumN_DEBUG: len=2 val=0
+sumN_DEBUG: len=1 val=0
+sumN_DEBUG: len=1 val=1
+sumN_DEBUG: len=2 val=2
+sumN_DEBUG: len=1 val=2
+sumN_DEBUG: len=1 val=3
+sumN_DEBUG: len=4 val=4
+sumN_DEBUG: len=2 val=4
+sumN_DEBUG: len=1 val=4
+sumN_DEBUG: len=1 val=5
+sumN_DEBUG: len=2 val=6
+sumN_DEBUG: len=1 val=6
+sumN_DEBUG: len=1 val=7
+sumN_DEBUG: len=8 val=8
+sumN_DEBUG: len=4 val=8
+sumN_DEBUG: len=2 val=8
+sumN_DEBUG: len=1 val=8
+sumN_DEBUG: len=1 val=9
+sumN_DEBUG: len=2 val=10
+sumN_DEBUG: len=1 val=10
+sumN_DEBUG: len=1 val=11
+sumN_DEBUG: len=4 val=12
+sumN_DEBUG: len=2 val=12
+sumN_DEBUG: len=1 val=12
+sumN_DEBUG: len=1 val=13
+sumN_DEBUG: len=2 val=14
+sumN_DEBUG: len=1 val=14
+sumN_DEBUG: len=1 val=15
+120
+sumN_DEBUG: len=15 val=0
+sumN_DEBUG: len=7 val=0
+sumN_DEBUG: len=3 val=0
+sumN_DEBUG: len=1 val=0
+sumN_DEBUG: len=2 val=1
+sumN_DEBUG: len=1 val=1
+sumN_DEBUG: len=1 val=2
+sumN_DEBUG: len=4 val=3
+sumN_DEBUG: len=2 val=3
+sumN_DEBUG: len=1 val=3
+sumN_DEBUG: len=1 val=4
+sumN_DEBUG: len=2 val=5
+sumN_DEBUG: len=1 val=5
+sumN_DEBUG: len=1 val=6
+sumN_DEBUG: len=8 val=7
+sumN_DEBUG: len=4 val=7
+sumN_DEBUG: len=2 val=7
+sumN_DEBUG: len=1 val=7
+sumN_DEBUG: len=1 val=8
+sumN_DEBUG: len=2 val=9
+sumN_DEBUG: len=1 val=9
+sumN_DEBUG: len=1 val=10
+sumN_DEBUG: len=4 val=11
+sumN_DEBUG: len=2 val=11
+sumN_DEBUG: len=1 val=11
+sumN_DEBUG: len=1 val=12
+sumN_DEBUG: len=2 val=13
+sumN_DEBUG: len=1 val=13
+sumN_DEBUG: len=1 val=14
+105
+sumN_DEBUG: len=3 val=10
+sumN_DEBUG: len=1 val=10
+sumN_DEBUG: len=2 val=11
+sumN_DEBUG: len=1 val=11
+sumN_DEBUG: len=1 val=12
+33
+sumN_DEBUG: len=16 val=1
+sumN_DEBUG: len=8 val=1
+sumN_DEBUG: len=4 val=1
+sumN_DEBUG: len=2 val=1
+sumN_DEBUG: len=1 val=1
+sumN_DEBUG: len=1 val=2
+sumN_DEBUG: len=2 val=4
+sumN_DEBUG: len=1 val=4
+sumN_DEBUG: len=1 val=8
+sumN_DEBUG: len=4 val=16
+sumN_DEBUG: len=2 val=16
+sumN_DEBUG: len=1 val=16
+sumN_DEBUG: len=1 val=32
+sumN_DEBUG: len=2 val=64
+sumN_DEBUG: len=1 val=64
+sumN_DEBUG: len=1 val=128
+sumN_DEBUG: len=8 val=256
+sumN_DEBUG: len=4 val=256
+sumN_DEBUG: len=2 val=256
+sumN_DEBUG: len=1 val=256
+sumN_DEBUG: len=1 val=512
+sumN_DEBUG: len=2 val=1024
+sumN_DEBUG: len=1 val=1024
+sumN_DEBUG: len=1 val=2048
+sumN_DEBUG: len=4 val=4096
+sumN_DEBUG: len=2 val=4096
+sumN_DEBUG: len=1 val=4096
+sumN_DEBUG: len=1 val=8192
+sumN_DEBUG: len=2 val=16384
+sumN_DEBUG: len=1 val=16384
+sumN_DEBUG: len=1 val=32768
+65535
+
++-----------------------------------------------------------+
+|    Magic Value (popped from the stack):                   |
++-----------------------------------------------------------+
+abcd1234
+
++-----------------------------------------------------------+
+|    Testcase Register Dump (fp, then 8 sX regs):           |
++-----------------------------------------------------------+
+fffffff6
+00000075
+fffffff7
+00000000
+000cbbd2
+fffffc4b
+fffffd28
+0000a763
+00000186

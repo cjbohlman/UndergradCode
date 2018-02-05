@@ -1,0 +1,37 @@
+Chris Bohlman, CSC 127B-001B
+Homework #8 - FARO SHUFFLING IS THE LITERAL DEVIL
+Instructor: Patrick Homer
+TA: Nathaniel Hendrix
+Due Date: 10/29/2016
+***TURNED IN ONE DAY LATE***
+
+
+This collection of classes was written in order to generate aand modify a deck based off of 
+a given file.
+The classes include the Deck, Card, and Node classes
+
+Initially, a program is given a text file and told to make a deck with that. The Deck 
+class takes care of that, and offers two types of deck making constructors: an as-is deck with
+string input, or an ordered deck with StringBuilder input. The decks are in reality linked 
+lists, and the nodes for each of the list's items are made up of cards (with a rank and suit, 
+detailed in Card class), and the nodes each link to each other as well.
+
+Now, the deck can be shuffled in two ways, outShuffle or inShuffle. Both are called in the 
+deck class, and both modify the current object, and they do not return a new object.
+
+However, the outShuffle and inShuffle methods both create their decks by creating a new deck 
+object, splitting the deck in half and butting the back half in said new object, and inserting 
+each of those into the current object as they saw fit.
+
+Calling the two string methods on any Card object or Deck object returns their representation 
+as a string.
+
+I used JDE 8.0_91, wrote the program through Eclipse, and was on a Windows
+10 laptop. To test this program, all submitted classes must be in the same folder as each 
+other.
+
+No known bugs exist, as I tried to extensively test. However, the stringbuilder constructor 
+was difficult to write for me, as sorting the cards took awhile to program. Therefore, it
+may be bugged, by I didn't see anything wrong with it.
+
+This was difficult. It's 12:28 AM. I'm tired.

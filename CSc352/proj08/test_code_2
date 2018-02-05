@@ -1,0 +1,221 @@
+#!/bin/bash -u
+
+# File: test_code
+# Author: Chris Bohlman
+# Purpose: checks a program versus an example programfor a variety of given testcases
+
+#test all of the arguments
+if [ "$#" -eq 1 ]; then
+	prog=$1
+fi
+if [ "$#" -eq 2 ]; then
+	prog=$1
+	code_direc=$2
+fi
+if [ "$#" -eq 3 ]; then
+	prog=$1
+        code_direc=$2
+	dir_ex_prog=$3
+fi
+if [ "$#" -eq 4 ]; then
+	prog=$1
+        code_direc=$2
+        dir_ex_prog=$3
+	tests=$4
+fi
+if [ "$#" -ne 4 ]; then
+	for ((x="$#"; x<4; x++)); do
+		if [ $x == 0 ]; then
+			read prog
+			if [ -z "$prog" ]; then
+                        	>&2 echo not enough arguments
+                        	exit 1
+           		fi
+		elif [ $x == 1 ]; then
+			read code_direc
+                        if [ -z "$code_direc" ]; then
+                                >&2 echo not enough arguments
+                                exit 1
+                        fi
+		elif [ $x == 2 ]; then
+                        read dir_ex_prog
+                        if [ -z "$dir_ex_prog" ]; then
+                                >&2 echo not enough arguments
+                                exit 1
+                        fi
+		elif [ $x == 3 ]; then
+                        read tests
+                        if [ -z "$tests" ]; then
+                                >&2 echo not enough arguments
+                                exit 1
+                        fi
+		fi
+	done
+fi
+
+#does the test case directory exist?
+if [ ! -d "$tests" ]; then
+	>&2 echo Unable to change to testcase directory
+	exit 1
+fi 
+
+#does the example executable directory exist?
+if [ ! -d "$dir_ex_prog" ]; then
+        >&2 echo Cannot execute the test executable
+        exit 1
+fi
+
+#does the code directory exist?
+if [ ! -d "$code_direc" ]; then
+        >&2 echo Cannot execute the reference executable
+        exit 1
+fi
+
+#does execultable exist?
+
+`cd ${code_direc}`
+if [ ! -f "$prog" ]; then
+	>&2 echo Cannot execute the user executable
+        exit 1
+fi
+`cd ..`
+
+ex_prog="$dir_ex_prog/ex_$prog"
+
+if [ ! -f "$ex_prog" ]; then
+        >&2 echo Cannot execute the reference executable
+        exit 1
+fi
+
+#iterate through test cases
+files=`ls ${tests}`
+for X in ${files} ; do
+	`cp ${tests}/$X ./`
+	`timeout 5s $prog <$X > my.out 2> my.err`
+	prog_ex_num=$?
+	`$ex_prog <$X > ref.out 2> ref.err` 
+	ex_prog_ex_num=$?
+	printf "*** testcase: "${X}" [ "
+	num=0
+	
+	# timeout boys
+        if [ $prog_ex_num -eq 124 ]; then
+                if [ $num -eq 0 ] ; then
+			printf "FAILED "
+		fi
+		printf ": Program timed out ]"
+                continue
+		
+        fi
+	
+	# abnormal termination boys
+        if [ "$prog_ex_num" -gt "128" ]; then
+                if [ $num -eq 0 ] ; then
+                        printf "FAILED "
+                fi
+		printf ": abnormal termination ]"
+                continue
+        fi
+		
+	#stdout has diff
+	if diff -q my.out ref.out > /dev/null; then
+		:
+	else
+		if [ $num -eq 0 ] ; then
+                        printf "FAILED "
+                fi
+		printf ": stdout has diff "
+		num=1
+	fi
+	# RC is zero but reference RC is non-zero
+	if  [  "$prog_ex_num" -eq "0" ]  && [ "$ex_prog_ex_num" -ne "0" ] ; then
+		if [ $num -eq 0 ] ; then
+                       printf "FAILED "
+                fi
+		printf ": RC is zero but reference RC is non-zero "
+                num=1
+	fi
+
+	#RC is not zero but reference RC is zero
+        if [ "$prog_ex_num" -ne "0" ] && [ $ex_prog_ex_num -eq 0 ]; then
+                if [ $num -eq 0 ] ; then
+                        printf "FAILED "
+                fi
+ 
+		printf ": RC is not zero but reference RC is zero "
+                num=1
+	fi
+	
+	if diff -q my.err ref.err > /dev/null; then
+		:	
+	else
+                if [ $num -eq 0 ] ; then
+                        printf "FAILED "
+                fi
+                printf ": stderr has spurious messages "
+                num=1
+        fi
+		
+		
+#	#stderr needs messages
+#	if [ -s ./ref.err ] && [ ! -s ./my.err ] ; then
+#                :
+#        else
+#        	if [ $num -eq 0 ] ; then
+#                        printf "FAILED "
+#                fi
+#
+#		printf ": stderr needs messages "
+#                num=1
+#	fi
+#	
+#	#stderr needs messages
+#        if  [ ! -s ./ref.err ] && [ -s ./my.err ]; then
+#                :
+#        else
+#                if [ $num -eq 0 ] ; then
+#                        printf "FAILED "
+#                fi
+#
+#                printf ": stderr has spurious messages "
+#                num=1
+#        fi
+
+
+	#valgrind reports memory errors/leaks
+	
+	`valgrind $prog <$X > val_ex1 2>&1`
+	if grep "0 errors from 0 contexts" val_ex1 > /dev/null; then
+		:
+	else
+		if [ $num -eq 0 ] ; then
+                        printf "FAILED "
+                fi
+
+		printf ":  valgrind reports memory errors "
+                num=1
+	fi
+
+	if grep "All heap blocks were freed -- no leaks are possible" val_ex1 > /dev/null; then
+                :
+        else
+                if [ $num -eq 0 ] ; then
+                        printf "FAILED "
+                fi
+
+		printf ":  valgrind reports memory leaks "
+                num=1
+        fi
+	
+	
+	if [ $num -ne 1 ] ; then 
+		printf "PASSED "
+	fi
+	printf "]\n"
+	`rm $X`
+	`rm my.err`
+	`rm my.out`
+	`rm ref.err`
+	`rm ref.out`
+	`rm val_ex1`	
+done

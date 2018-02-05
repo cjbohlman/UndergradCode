@@ -1,0 +1,210 @@
+public class Section5
+{
+
+    public static void main (String [] args)
+    {
+            // These two lines are from the Oracle Java technotes on assert.
+            // If assertions are enabled, then the 2nd line will be executed;
+            // because the expression is true, the program continues with
+            // variable set to true.  If assertions are not enabled, 
+            // the same statement is skipped and the variable retains its
+            // initialization to false.  The result is that we can query
+            // this variable to know whether or not assertions are enabled
+            // for this execution of the program.
+
+        boolean assertionsEnabled = false;
+        assert assertionsEnabled = true;
+
+        if (!assertionsEnabled) {
+            System.out.println("\n\t[[ Warning: Assertions are disabled! ]]");
+            System.out.println("\t    [[ Re-run with \"java -ea\" ]]\n");
+        }
+
+            // Do some basic testing of TicketGenerator
+
+        if (assertionsEnabled) {
+            System.out.println("Testing TicketGenerator...");
+        }
+
+        if (assertionsEnabled) System.out.println("\tOnly constructor...");
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 0 tickets...");
+
+        TicketGenerator t = new TicketGenerator();
+        assert t.qtyIssued() == 0 : "qtyIssued() should be 0.";
+        assert t.firstIssued() == -1 : "firstIssued() should be -1";
+        assert t.lastIssued() == -1 : "lastIssued() should be -1";
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 1 ticket...");
+
+        String ticket = t.issueTicket();
+        assert ticket.equals("000000") : "first ticket should be 000000.";
+        assert t.qtyIssued() == 1 : "qtyIssued() should be 1.";
+        assert t.firstIssued() == 0 : "firstIssued() should be 0";
+        assert t.lastIssued() == 0 : "lastIssued() should be 0";
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 2 tickets...");
+
+        ticket = t.issueTicket();
+        assert ticket.equals("000001") : "second ticket should be 000001.";
+        assert t.qtyIssued() == 2 : "qtyIssued() should be 2.";
+        assert t.firstIssued() == 0 : "firstIssued() should be 0";
+        assert t.lastIssued() == 1 : "lastIssued() should be 1";
+
+            // Do some basic testing of RaffleTicketGenerator
+
+        if (assertionsEnabled) {
+            System.out.println("Testing RaffleTicketGenerator...");
+        }
+
+        if (assertionsEnabled) System.out.println("\tConstructor 1...");
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 0 tickets...");
+
+        RaffleTicketGenerator r = new RaffleTicketGenerator();
+        assert r.qtyIssued() == 0 : "qtyIssued() should be 0.";
+        assert r.firstIssued() == -1 : "firstIssued() should be -1";
+        assert r.lastIssued() == -1 : "lastIssued() should be -1";
+        assert r.drawWinner() == -1 : "drawWinner() should be -1";
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 1 ticket...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000000") : "first ticket should be 000000.";
+        assert r.qtyIssued() == 1 : "qtyIssued() should be 1.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 0 : "lastIssued() should be 0";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner==0 : "drawWinner() should be 0";
+        }
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 2 tickets...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000001") : "second ticket should be 000001.";
+        assert r.qtyIssued() == 2 : "qtyIssued() should be 2.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 1 : "lastIssued() should be 1";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner>=0 && winner<=1 : "drawWinner() should be 0 or 1";
+        }
+
+        if (assertionsEnabled) System.out.println("\t\tResetting to 0...");
+
+        r.reset(0);
+        assert r.qtyIssued() == 0 : "qtyIssued() should be 0.";
+        assert r.firstIssued() == -1 : "firstIssued() should be -1";
+        assert r.lastIssued() == -1 : "lastIssued() should be -1";
+        assert r.drawWinner() == -1 : "drawWinner() should be -1";
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 1 ticket...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000000") : "first ticket should be 000000.";
+        assert r.qtyIssued() == 1 : "qtyIssued() should be 1.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 0 : "lastIssued() should be 0";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner==0 : "drawWinner() should be 0";
+        }
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 2 tickets...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000001") : "second ticket should be 000001.";
+        assert r.qtyIssued() == 2 : "qtyIssued() should be 2.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 1 : "lastIssued() should be 1";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner>=0 && winner<=1 : "drawWinner() should be 0 or 1";
+        }
+
+
+                /* Part III:  Your job is to add the assertion-based testing
+                 * for the second constructor.  Fortunately, you have the
+                 * above tests as guides.  Suggestion:  Copy-n-paste the
+                 * code that tests Constructor 1 of RaffleTicketGenerator,
+                 * and adjust it to test Constructor 2.
+                 */
+
+        if (assertionsEnabled) System.out.println("\tConstructor 2...");
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 0 tickets...");
+
+        r = new RaffleTicketGenerator(0);
+        assert r.qtyIssued() == 0 : "qtyIssued() should be 0.";
+        assert r.firstIssued() == -1 : "firstIssued() should be -1";
+        assert r.lastIssued() == -1 : "lastIssued() should be -1";
+        assert r.drawWinner() == -1 : "drawWinner() should be -1";
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 1 ticket...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000000") : "first ticket should be 000000.";
+        assert r.qtyIssued() == 1 : "qtyIssued() should be 1.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 0 : "lastIssued() should be 0";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner==0 : "drawWinner() should be 0";
+        }
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 2 tickets...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000001") : "second ticket should be 000001.";
+        assert r.qtyIssued() == 2 : "qtyIssued() should be 2.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 1 : "lastIssued() should be 1";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner>=0 && winner<=1 : "drawWinner() should be 0 or 1";
+        }
+
+        if (assertionsEnabled) System.out.println("\t\tResetting to 0...");
+
+        r.reset(0);
+        assert r.qtyIssued() == 0 : "qtyIssued() should be 0.";
+        assert r.firstIssued() == -1 : "firstIssued() should be -1";
+        assert r.lastIssued() == -1 : "lastIssued() should be -1";
+        assert r.drawWinner() == -1 : "drawWinner() should be -1";
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 1 ticket...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000000") : "first ticket should be 000000.";
+        assert r.qtyIssued() == 1 : "qtyIssued() should be 1.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 0 : "lastIssued() should be 0";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner==0 : "drawWinner() should be 0";
+        }
+
+        if (assertionsEnabled) System.out.println("\t\tIssued 2 tickets...");
+
+        ticket = r.issueTicket();
+        assert ticket.equals("000001") : "second ticket should be 000001.";
+        assert r.qtyIssued() == 2 : "qtyIssued() should be 2.";
+        assert r.firstIssued() == 0 : "firstIssued() should be 0";
+        assert r.lastIssued() == 1 : "lastIssued() should be 1";
+        for (int i = 0; i<100; i++) {  // see that winner is 'always' in range
+            int winner = r.drawWinner();
+            assert winner>=0 && winner<=1 : "drawWinner() should be 0 or 1";
+        }
+
+
+
+
+                // If the user sees this message, no assertions failed.
+
+        if (assertionsEnabled) {
+            System.out.println("\n ==> Congratulations!  All tests passed!");
+        }
+    }
+
+} // Section5

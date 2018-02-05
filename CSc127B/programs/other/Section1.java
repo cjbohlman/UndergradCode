@@ -1,0 +1,234 @@
+/*-------------------------------------------------------------------
+ * 
+ Class CalenderDate
+ 
+ Author: Chris Bohlman
+ 
+ Purpose: 
+ 
+ Inherits from: None
+ 
+ Interfaces: None
+ 
+ _____________________________________________________________________
+ 
+ Constants:
+ 
+ _____________________________________________________________________
+ 
+ Constructors:
+ 
+ Class Methods:
+ 
+ Instance Methods:
+ 
+ -------------------------------------------------------------------*/
+import java.util.Scanner;
+import java.io.*;
+
+//The class
+public class Section1 {
+  public static void main (String [] args) {
+    scanner sc= new Scanner(System.in);
+    System.out.println("Please enter a month number");
+    int month=sc.nextInt();
+    System.out.println("Please enter a day");
+    int day=sc.nextInt();
+    System.out.println("Please enter a year number");
+    int year=sc.nextInt();
+    
+    call CalenderDate (year, month, day);
+  }
+}
+
+public class CalenderDate {
+  
+  private int year, month, day;
+  private string Month;
+  
+  //The constructor
+  public CalenderDate(int year, int month, int day) {
+    
+    this.year = year;
+    this.month = month;
+    this.day = day;
+  }
+  
+  //The methods
+  public void setDate (int year, int month, int day) {
+    if (year<1753) {
+      set year = 1753;
+      set month = 1;
+      set day = 1;
+    }
+    if (month<1) {
+      set month = 1;
+    }
+    if (month>12) {
+      set month = 12;
+    }
+    if (day<1) {
+      set day  = 1;
+    }
+    if (month=1||month=3||month = 5||month=7||month=8||month=10||month=12) {
+      if (day>31) {
+        set day = 31;
+      }
+    }
+    if (month=4||month=6||month = 9||month=11) {
+      if (day>30) {
+        set day = 30;
+      }
+    }
+    if (month = 2) {
+      if (year%4 = 0 && year %100 != 0) {
+        if (day>29) {
+          set day = 29;
+        }
+      }
+      else {
+        if (day>28) {
+          set day = 28;
+        }
+      }
+    }
+  }
+  
+  public int getYear() {
+    return year;
+  }
+  
+  public int getMonth() {
+    return month;
+  }
+  
+  public string getMonthAsString() {
+    if (month = 1) {
+      set Month = "January";
+    }
+    if (month = 2) {
+      set Month = "February";
+    }
+    if (month = 3) {
+      set Month = "March";
+    }
+    if (month = 4) {
+      set Month = "April";
+    }
+    if (month = 5) {
+      set Month = "May";
+    }
+    if (month = 6) {
+      set Month = "June";
+    }
+    if (month = 7) {
+      set Month = "July";
+    }
+    if (month = 8) {
+      set Month = "August";
+    }
+    if (month = 9) {
+      set Month = "September";
+    }
+    if (month = 10) {
+      set Month = "October";
+    }
+    if (month = 11) {
+      set Month = "November";
+    }
+    if (month = 12) {
+      set Month = "December";
+    }
+  }
+  
+  public int getDay() {
+    return day;
+  }
+  
+  public String toString() {
+    return Month+ " " +day+ " " +year;
+  }
+  
+  public boolean equals (CalenderDate otherDate) {
+    boolean equalCalender = false;
+    if (CalenderDate.equals("otherDate")) {
+      return !equalCalender;
+    }
+    return equalCalender;
+  }
+  
+  public String tomorrow() {
+    if (day == 31){
+      if (month=1||month=3||month = 5||month=7||month=8||month=10) {
+        if (day==31) {
+          set day = 1;
+        }
+        else {
+          day++;
+        }
+      }
+    }
+    
+    if (month=4||month=6||month = 9||month=11) {
+      if (day==30) {
+        set day = 1;
+      }
+      else {
+        day++;
+      }
+    }
+    if (month = 2) {
+      if (year%4 = 0 && year %100 != 0) {
+        if (day==29) {
+          set day = 1;
+        }
+      }
+      else if(day==28) {
+        set day = 1;
+      }
+      else {
+        day++;
+      }
+    }
+    month++;
+    
+    if (month = 1) {
+      set Month = "January";
+    }
+    if (month = 2) {
+      set Month = "February";
+    }
+    if (month = 3) {
+      set Month = "March";
+    }
+    if (month = 4) {
+      set Month = "April";
+    }
+    if (month = 5) {
+      set Month = "May";
+    }
+    if (month = 6) {
+      set Month = "June";
+    }
+    if (month = 7) {
+      set Month = "July";
+    }
+    if (month = 8) {
+      set Month = "August";
+    }
+    if (month = 9) {
+      set Month = "September";
+    }
+    if (month = 10) {
+      set Month = "October";
+    }
+    if (month = 11) {
+      set Month = "November";
+    }
+    if (month = 12) {
+      set Month = "December";
+    }
+    return Month+ " " +day+ " " +year;
+  }
+  
+}

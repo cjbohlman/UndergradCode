@@ -1,0 +1,28 @@
+Explain OOP concepts:
+
+    encapsulation,
+    constructors,
+    methods and
+    properties
+
+Highlight the differences with regular programs in terms of:
+
+    safety and information hiding
+    creation (timing, how they are created)
+
+Encapsutlation is the combining of code and data into a single entitty, which in this case, is an object. Therefore, through OOP, good code modularity and interchangeablility could be acieved through encapsulation. Since these routines will be seperate, there is less of a chance of error.
+
+
+Consturctors are methods that are automatically called once an object is created. Constructors construct objects and usually provide starting data for an objects fields.
+
+Methods are the procedures that an object performs, which are usually moduels or functions. 
+Methods that can be accessed outside the object are called public methods.
+Private methods are methods that don't have direct access. The object usually executes these automatically.
+A method that gets a value from the class' field but doesn't change it an accessor method.
+A method that stores the value in a field or changes the value of a field is a mutator method.
+
+With OOP, only the methods in the object can directly access and change the object's data. But other outside code can in turn access the methods, but not the data.
+Therefore, OOP is more secure than regular programs, as OOP does not ever need to know the internal data by the outside code. Corruption odf data does not happen with correct application of OOP.
+
+OOP is very helpful for creations of larger projects. Since objects are seperate from the data, objects can be taken out of the program and reused in other
+programs. Therefore, OOP makes the data dependent on the methods, and not the other way around, so code (specifically objects) can be reused and revised within other programs.

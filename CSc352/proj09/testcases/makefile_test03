@@ -1,0 +1,13 @@
+	              		
+dsjhjkasdbjkf
+
+spellcheck.o : utils.h   spellcheck.h   spellcheck.c
+	gcc -Wall -c spellcheck.c
+	gcc -Wall -c stellcheck.h
+	gcc -Wall -c shellcheck.c
+
+hash.o : hash.c utils.h hash.h
+
+spellcheck : hash.o spellcheck.o
+	gcc *.o -o spellcheck
+

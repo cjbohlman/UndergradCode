@@ -1,0 +1,93 @@
+Module main ()
+
+//Introduction
+Display "Imagine this figure, with three numbers where the xx's are"
+Display "         (  )"
+Display "        /    \"
+Display "      [xx]  [xx]"
+Display "      /        \"
+Display "   (  )--[xx]--(  )"
+Display "The numbers in the squares are the sums of the numbers of the circles."
+Display "This program will ask for the values of the 3 spots in [], and produce the three numbers in the circles"
+Display "The numbers inputted must be between -40 and 40.
+
+//Constant declaration
+Declare Integer Cols = 3
+Declare Double values[Cols]
+Declare Double dvalues[Cols]
+Declare Double sumCircles
+
+//Asking for numbers and validating inputs
+Display "What is the number in the top left square?"
+Input values[0]
+While values[0] < -40 OR values[0] > 40
+	Display "I'm sorry, that number is not valid. Please enter a value between -40 and 40."
+	Input values[0]
+End While
+
+Display "What is the number in the top right square?"
+Input values[1]
+While values[1] < -40 OR values[1] > 40
+	Display "I'm sorry, that number is not valid. Please enter a value between -40 and 40."
+	Input values[1]
+End While
+
+Display "What is the number in the bottom square?"
+Input values[2]
+While values[2] < -40 OR values[2] > 40
+	Display "I'm sorry, that number is not valid. Please enter a value between -40 and 40."
+	Input values[2]
+End While
+
+//Functions
+sumCircles = .5(values[0] + values[1] + values[2])
+
+Set dvalues[2] = getTopCircle(values, sumCircles)
+
+Set dvalues[0] = getLeftCircle(values, dvalues)
+
+Set dvalues[1] = getRightCircle(values, dvalues)
+
+//Displaying results
+Display "The number in the top circle is ", dvalues[2]
+Display "The number in the left circle is ", dvalues[0]
+Display "The number in the right circle is ", dvalues[1]
+Display "Here is the filled in chart: "
+Display "         (", dvalues[2], ")"
+Display "        /    \"
+Display "      [", values[0], "]  [", values[1], "]"
+Display "      /        \"
+Display "   (", dvalues[0], ")--[", values[2], "]--(", dvalues[1], ")"
+
+End Module
+______________________________________________________
+
+Function Double getTopCircle(Double array[], Double sum)
+
+Declare Double total = 0
+Set total = array[0] + array[1] - sum
+Return total
+
+End Function
+
+______________________________________________________
+
+Function Double getLeftCircle(Double array[], Double array2[])
+
+Declare Double total = 0
+Set total = array[0] - array2[2]
+Return total
+
+End Function
+
+______________________________________________________
+
+Function Double getRightCircle(Double array[], Double array2[])
+
+Declare Double total = 0
+Set total = array[1] - array2[2]
+Return total
+
+End Function
+
+______________________________________________________

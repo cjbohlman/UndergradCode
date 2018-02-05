@@ -1,0 +1,16 @@
+spellcheck.o : utils.h   spellcheck.h   spellcheck.c
+	gcc -Wall -c spellcheck.c
+	gcc -Wall -c stellcheck.h
+	gcc -Wall -c shellcheck.c
+
+hash.o :  hash.c  utils.h hash.h
+
+utils.h : crash.o bash.o
+	
+crash.o:      
+	gcc -Wall -c hello.c
+	gcc -Wall -c goodbye.c
+   
+spellcheck : hash.o spellcheck.o
+	gcc *.o -o spellcheck
+

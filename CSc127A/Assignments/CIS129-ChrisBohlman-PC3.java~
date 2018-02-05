@@ -1,0 +1,144 @@
+/*************************************************************************
+  *Java shell
+  * 
+  * NOTE: I have put a lot of comments to guide you in the code.
+  *************************************************************************/
+
+// this is used to allow us to use classes in all the libraries of java.io
+import java.io.*;
+
+public class CIS129-ChrisBohlman-PC3 {
+  
+  public static void main(String[] args) {
+    // first we define our input streams.
+    InputStreamReader input = new InputStreamReader(System.in);
+    BufferedReader reader = new BufferedReader(input);   
+    
+    // we catch exceptions if some are thrown.
+    try { 
+      System.out.println ("Let's plan your week long trip.");
+      System.out.println ("How much money do you have?");
+      int moneyValue = Integer.parseInt(reader.readLine());
+      
+      System.out.println ("Do you want to fly somewhere international?");
+      string hAnswer  = reader.readLine();
+      If (hAnswer.compareToIgnoreCase("y")==0) {
+        System.out.println ("You can go to Florence, Italy.");
+        System.out.println ("Would you like stay in a hotel ($150 a night)?");
+        If (input == y) {
+          int planeTicket = 1500;
+          int hotelPrice = 150 * 7;
+          int tripCost = planeTicket + hotelPrice;
+          int leftoverMoney = moneyValue - tripCost;
+          If (leftoverMoney>=0) {
+            System.out.println ("Great! Your trip will cost " +tripCost ".");
+            System.out.println ("Enjoy your hotel stay at Florence!");
+          }
+          Else {
+            System.out.println ("Your trip will cost " +tripCost ".");
+            System.out.println ("Sorry, you don't have enough money to make this trip.");
+          }
+        }
+        
+        Else (
+              System.out.println ("Looks like you're staying in a hostel ($20 a night).");
+              int planeTicket = 1500;
+              int hostelPrice = 20 * 7;
+              int tripCost = planeTicket + hostelPrice;
+              int leftoverMoney = moneyValue - tripCost;
+              If (leftoverMoney>=0) {
+                System.out.println ("Great! Your trip will cost " +tripCost ".");
+                System.out.println ("Enjoy your hostel stay at Florence!");
+              }
+              Else {
+                System.out.println ("Your trip will cost " +tripCost ".");
+                System.out.println ("Sorry, you don't have enough money to make this trip.");
+              }
+              )
+      }
+      Else {
+        System.out.println ("Would you like to vacation in the outdoors?");
+        If (input = y) {
+          System.out.println ("Would you like to camp?");
+          If (input = y} {
+            int gasCost = 100;
+            int campRentCost = 20 * 7;
+            int tripCost = gasCost + campRentCost;
+            int leftoverMoney = moneyValue - tripCost;
+            
+            If (leftoverMoney>=0) {
+              System.out.println ("Great! Your trip will cost " +tripCost ".");
+              System.out.println ("Enjoy your camping!");
+            }
+            
+            Else (
+                  System.out.println ("Your trip will cost " +tripCost ".");
+                  System.out.println ("Sorry, you don't have enough money to make this trip.");
+                  )
+          }
+          }
+              Else ( 
+                    System.out.println ("Looks like you're kayaking, then.");
+                    
+                    int gasCost = 100;
+                    int tripCost = gasCost;
+                    int leftoverMoney = moneyValue - tripCost;
+                    
+                    If (leftoverMoney>=0) {
+                      System.out.println ("Great! Your trip will cost " +tripCost ".");
+                      System.out.println ("Enjoy your kayaking! Beware of mosquitos galore.");
+                    }
+                    Else {
+                      System.out.println ("Your trip will cost " tripCost ".");
+                      System.out.println ("Sorry, you don't have enough money to make this trip.");
+                    }
+                    )
+                
+                
+                Else (
+                      System.out.println ("You want to stay indoors, then.");
+                      System.out.println ("Would you like to stay at a nearby resort?");
+                      If (input = y) (
+                                      int tripCost = 200 * 7;
+                                      int leftoverMoney = moneyValue - tripCost;
+                                      
+                                      If (leftoverMoney>=0) {
+                                        System.out.println ("Great! Your trip will cost " +tripCost ".");
+                                        System.out.println ("Enjoy your staycation!");
+                                      }
+                                      
+                                      Else (
+                                            System.out.println ("Your trip will cost " +tripCost ".");
+                                            System.out.println ("Sorry, you don't have enough money to make this trip.");
+                                            )
+                                     )
+                        Else {
+                        System.out.println ("Looks like you have to stay with your parents.");
+                        int gasCost = 100;
+                        int tripCost = gasCost;
+                        int leftoverMoney = moneyValue - tripCost;
+                        
+                        If (leftoverMoney>=0) {
+                          System.out.println ("Great! Your trip will cost " +tripCost ".");
+                          System.out.println ("Enjoy your parents!");
+                        }
+                        Else {
+                          System.out.println ("Your trip will cost " tripCost ".");
+                          System.out.println ("Sorry, you don't have enough money to make this trip.");
+                        }
+                      }
+                      )
+                
+                
+                
+                } catch (Exception e){
+                System.out.println("Error reading from user");
+              }
+              
+              }
+  
+}
+
+
+
+

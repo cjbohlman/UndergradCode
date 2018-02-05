@@ -1,0 +1,76 @@
+// CopyTextFile.java:  CSc 127B, Fall 2015, Section 4, Part II
+// (McCann)
+//   2016/09/01: Exception-handling removed for 127B F'16 Sec 2 Part II
+
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+
+
+
+public class CopyTextFile
+{
+
+    public static void main (String [] args) throws Exception
+    {
+        final int EndOfStream = -1;    // Returned by read() at end of file
+
+        BufferedReader inFile = null;  // The input file being copied
+        BufferedWriter outFile = null; // The output file copy being created
+        String sourceName = null,      // File name/path of file being copied
+               destinationName = null; // File name/path of the new copy
+        int currentChar = -1;          // Will read/write one char at a time
+
+
+        if (args.length >= 2) {  // if enough file names/paths are provided
+
+            for (int i=0; i<args.length; i++) {  // NEEDS TO BE REPLACED!
+                System.out.printf("args[%d] = %s\n",i,args[i]);
+            }
+
+        } else {
+            System.out.println("Usage:  java CopyTextFile <source> " 
+                             + "<destination>");
+            return;
+        }
+
+                // open both files 
+
+
+
+
+
+                // Read and write characters until a read fails because we
+                // have reached EOF.
+       
+        while (true) {
+
+                    // Try to read a character from the input file
+
+
+
+
+
+                    // If the read failed, we're done; leave the loop
+
+            if (currentChar == EndOfStream) break;
+
+                    // Otherwise, write the character to the output file
+
+
+
+
+
+        }  // infinite while
+
+                // Having exhausted the input file, close both files.
+
+
+
+
+
+
+    }  // main
+
+} // CopyTextFile

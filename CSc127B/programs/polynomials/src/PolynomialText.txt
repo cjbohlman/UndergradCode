@@ -1,0 +1,33 @@
+Chris Bohlman, CSC 127B-001B
+Homework #5 - PolynomialA and PolynomialB
+Instructor: Patrick Homer
+TA: Nathaniel Hendrix
+Due Date: 9/30/2016
+
+
+The program was written in order to make a Polynomial object that was 
+made up of an ArrayList of Terms and a LinkedList of terms and each term object had an 
+exponent and coefficient. 
+Both the PolynomialA and B classes had many methods, including:
+one that added a term based off of a coefficient and exponent argument
+one that sorted terms based off of the bubble sort algorithm
+one that replicate the polynomial object into a new object
+one that made all positive coefficients negative or all negative coefficients positive
+one that compared the equality of two polynomial objects
+one that added a polynomial object into another object
+one that checked if the array was full
+one that checked if the array was empty
+one that returned how many terms with nonzero coefficients there were
+one that multipled each coefficient with scalar s
+one that return the coeffcient of whatever term had exponent e
+one that evaluated the polynomial with a given number
+one that returned the polynomial object as a string
+one that returned an ArrayList/LinkedList of all the exponents in each of the term objects
+These methods all helped to edit the data and provide a through look at arrays of objects.
+
+I used JDE 8.0_91, wrote the program through Eclipse (woo first time), and was on a Windows
+10 laptop. To test this program, the PolynomialA and B programs, the Quanitity interface, and 
+the Term class must be in the same folder as either program 5A or 5B.
+
+No known bugs exist. I debugged the crap out of this program. It's much more improved now, 
+especially the two Polynomial programs.

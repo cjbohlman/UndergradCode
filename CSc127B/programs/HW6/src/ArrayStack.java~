@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+
+public class ArrayStack {
+	
+	private ArrayList<Location> list = null;
+	
+	public ArrayStack() {
+		list = new ArrayList<Location>();
+	}
+	
+	Location topPeek () {
+		return list.get(0);
+	}
+	
+	void itemPush(Location l) {
+		list.add(0,l);
+	}
+	
+	 void itemPop() {
+		list.remove(0);
+	}
+	 
+	int size() {
+		return list.size();
+	}
+	
+	boolean isEmpty() {
+		int size = list.size();
+		if (size != 0) {
+			return false;
+		}
+		else return true;
+	}
+
+}

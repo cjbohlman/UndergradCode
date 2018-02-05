@@ -1,0 +1,42 @@
+Declare Integer Size = 20
+
+Module main ()
+	Declare String uAnswers[Size]
+	Declare Integer index
+
+	For index = 0 to Size-1
+		Display "Enter anser to question ", index+1
+		Input uAnswers[index]
+	End For
+
+	Set total = grading(uAnswers, Size)
+
+	If total >= 15
+		Display "Congratulations, you passsed the test"
+		Display "You got ", numberRight, "questions right"
+		Display "You got ", 20 - total, "questions wrong"
+
+	Else
+		Display "I am sorry, you failed the test"
+		Display "You got ", numberRight, "questions right"
+		Display "You got ", 20 - total, "questions wrong"
+	End If
+
+
+
+End Module
+
+Function Integer grading(String array[], Integer arraySize)
+	Declare String cAnswers[Size] = "B", "D", "A", "A", "C", "A", "B", "A", "C", "D", "B", "C", "D", "A", "D", "C", "C", "B", "D", "A"
+	Declare Integer numberRight = 0
+	Declare Integer index
+
+	For index = 0 to Size-1
+		If uAnswers[index2] = cAnswers[index2]
+			numberRight = numberRight + 1
+		Else
+			Display "You got question ", index+1," wrong."
+		End If
+	End For
+	Return numberRight
+End Function

@@ -1,0 +1,23 @@
+Chris Bohlman, CSC 127B-001B
+Homework #2 - Word Count
+Instructor: Patrick Homer
+TA: Nathaniel Hendrix
+Due Date: 9/29/2016
+
+The program was written in order to either accept a file input through the 
+commannd line or through the main method's readLine() method. Next, the
+Count method is called, and that counts the number of lines, characters, 
+and words that each of the input files have. This is done through an 
+intricate series of decision loops and booleans that increment the counts
+for the lines, words, and characters under specific parameters. The program
+then prints these values in a for loop for each text file, and the total
+amounts of these are displayed.
+
+I used JDE 8.0_91, wrote the program through Dr. Java, and was on a Windows
+10 laptop. To test this program, whatever text files needed for testing
+must be in the same folder as Prog2.
+
+No known bugs exist, as I have extensively tested and gone to TAs for 
+help. I had a bit of trouble with the line characters and word count
+portions of the assignment, but hopefully I ironed those out. I tested
+this program extensively, so I believe the conditions are well set.

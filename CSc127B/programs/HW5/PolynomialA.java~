@@ -1,0 +1,226 @@
+/*-------------------------------------------------------------------
+ Class Polynomial
+ Chris Bohlman
+ Inherits from: None
+ Package Contained In: None
+ 
+ Purpose: holds an array of term objects in one object
+ 
+ Instance Variables: terms array
+ 
+ Classs Methods: n/a
+ 
+ Instance Methods:
+ add
+ addTerm
+ sort
+ replicate
+ equals
+ getCoefficient
+ evaluate
+ isEmpty
+ isFull
+ holding
+ negate
+ scalarMultiply
+ toString
+ -------------------------------------------------------------------*/
+
+//import packages
+import java.io.*;
+import java.lang.*;
+import java.math.*;
+import java.util.ArrayList;
+import java.util.*;
+
+//the class
+public class PolynomialA implements Quantity{
+  
+  private ArrayList<Term> a1;
+  
+  //constructor: sets new objects value to zero
+  public PolynomialA() {
+    a1 = new ArrayList<Term>();
+  }
+  
+  //add method: adds Polynomial p to current polynomial
+  public PolynomialA add(PolynomialA a) {
+    int aSize = a.size();
+    for (int i = 0; i < aSize; i++) {
+      a1.add(a(i));
+    }
+  }
+  
+  //addTerm method: adds a term to the current object wit coefficient c and exponent e
+  void addTerm(int c, int e) {
+    int newCoef;
+    for(int i = 0; i < a1.size(); i++) {
+      if (e == a1(i).getExponent()) {
+        newCoef = c + a1(i).getCoefficient();
+        a1.set(i,setCoefficient(newCoef));
+        break;
+      }
+      else{
+        a1.add(Term(c,e));
+      }
+      sort();
+    }
+  }
+  
+  //sort method: sorts exponents in ascending order
+  void sort() {
+    List temp = new ArrayList(1);
+    boolean swap = true;
+    while(swap) {
+      swap = false;
+      for(int i = a1.size() -1; i == 0; i--) {
+        if (a1(i).getExponent() < a1(i-1).getExponent()) {
+          temp(0) = a1(i-1);
+          a1(i-1) = a1(i);
+          a1(i).add(temp(0));
+          swap = true;
+        }
+      }
+    } 
+  }
+  
+  //replicate methd: replicates current polynomial into new polynomial
+  PolynomialA replicate() {
+    Polynomial rep = new PolynomialA();
+    rep.a1 = a1;
+    return rep;
+  }
+  
+  //equals method: if two polynomials share the same exponents, coefficients, and length, returns true
+  boolean equals(PolynomialA p) {
+    boolean equals = false;
+    int a1Size = a1.size();
+    int pSize = p.size();
+    for(int i = 0; i < a1.size; i++) {
+      if(a1(i).getExponent() == p(i).getExponent() && a1(i).getCoefficient() == p(i).getCoefficient() && a1Size == pSize) {
+        equals = true;
+      }
+      else equals = false;
+    }
+    return equals;
+  }
+  
+  //getCoefficient method: returns coefficient of term with exponent e
+  int getCoefficient(int e) {
+    int f = 0;
+    int a1Size = a1.size();
+    for(int i = 0; i < a1Size; i++) {
+      if (e == a1(i).getExponent()) {
+        f = a1(i).getCoefficient();
+      }
+    }
+    return f;
+  }
+  
+  //evaluate method: evaluates current polynomial by double x
+  double evaluate(double x) {
+    double total = 0;
+    int a1size = a1.size();
+    for( int i = 0; i < a1.size(); i++) {
+      int e = a1(i).getExponent();
+      int c = a1(i).getCoefficient();
+      total = total + c*Math.pow(x,e);
+    }
+    return total;
+  }
+  
+  //isEmpty method: returns true if the current array is empty
+  boolean isEmpty() {
+    boolean empty = true;
+    int a1Size = a1.size();
+    for (int i = 0; i > a1Size; i++) {
+      if (!(a1(i) == null)) {
+        empty = false;
+      }
+    }
+    return empty;
+  }
+  
+  //isFull method: returns true if current array has non-zero terms filling all objects
+  boolean isFull() {
+    boolean full = false;
+    int holding = 0;
+    int a1Size = a1.size();
+    for(int i = 0; i < a1Size; i++) {
+      int c = a1(i).getCoefficient();
+      if (c != 0) {
+        holding = holding + 1;
+      }
+      if (a1Size == holding) {
+        full = true;
+      }
+    }
+    return full;
+  }
+  
+  //holding method: returns how many terms have non zero coefficients on them
+  int holding() {
+    int i;
+    int holding = 0;
+    int c;
+    int a1Size = a1.size();
+    for (i = 0; i < a1Size; i++) {
+      c = a1(i).getCoefficient();
+      if (c != 0) {
+        holding = holding + 1;
+      }
+    }
+    return holding;
+  }
+  
+  //negate method: changes all coefficients in the current object to be negative if they are positive, or positive if they are negative
+  PolynomialA negate() {
+    PolynomialA negate = new PolynomialA();
+    negate.a1 = a1;
+    int a1Size = a1.size();
+    for(int i = 0; i < a1Size; i++) {
+      int e = a1(i).getExponent();
+      int c = -1 * a1(i).getCoefficient();
+      negate.a1(i).setCoefficient(c);
+    }
+    return negate;
+  }
+  
+  //scalarMultiply method: multiplies all coefficients by int s
+  public void scalarMultiply(int s) {
+    int a1Size = a1.size();
+    for(int i = 0; i < a1Size; i++) {
+      int e = a1(i).getExponent();
+      int c = s * a1(i).getCoefficient();
+      a1(i).setCoefficient(c);
+    }
+  }
+  //toString method: spits out Polynomial object as a string
+  public String toString() {
+    String poly = "";
+    int a1Size = a1.size();
+    int c = 0;
+    int e = 0;
+    for (int i = 0; i < a1Size; i++) {
+      e = a1(i).getExponent();
+      c = a1(i).getCoefficient();
+      if (c == 0) {
+        poly = "";
+        continue;
+      }
+      if (i == 0) {
+        poly = c+"x^"+e;
+      }
+      else {
+        poly = poly+" + "+c+"x^"+e;
+      }
+    }
+    return poly;
+  }
+  
+  List integerList() {
+    
+    
+    
+  }
+}//class end

@@ -1,0 +1,75 @@
+/*-------------------------------------------------------------------
+ Class Term
+ Chris Bohlman
+ Inherits from: None
+ Package Contained In: None
+ 
+ Purpose:
+ 
+ Instance Variables: 
+ 
+ 
+ Classs Methods:
+ 
+ 
+ Instance Methods:
+ 
+ -------------------------------------------------------------------*/
+
+//import packages
+import java.io.*;
+
+//the class
+public class Term {
+  
+  //the instance variable
+  public int coef;
+  public int exp;
+  
+  /*********************
+    Constructor
+    Purpose: 
+    **********************/
+  public Term(int coef, int exp) {
+    this.coef = coef;
+    this.exp = exp;
+  }
+  
+  public int getExponent() {
+    return exp;
+  }
+  
+  public int getCoefficient(int e) {
+    if (exp == e) {
+      return coef;
+    }
+    else {
+      return 0;
+    }
+  }
+  
+  public int setExponent(int e) {
+    exp = e;
+    return exp;
+  }
+  
+  public int setCoefficient(int c, int e) {
+    if (exp == e) {
+      this.coef = c + coef;
+      return coef;
+    }
+    else {
+      return 0;
+    }
+  }
+  
+  public void scalarMultiply(int s) {
+    this.coef = s * coef;
+  }
+  
+  public String toString() {
+    String term = coef+"x^"+exp;
+    return term;
+    
+  }
+}

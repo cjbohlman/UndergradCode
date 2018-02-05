@@ -1,0 +1,49 @@
+printInts: About to print 8 elements.
+1234
+-17
+100
+4096
+0
+-32768
+10
+13
+printWords: There were 19 words.
+lines!
+blank
+to
+lead
+will
+double-spaces
+that
+Note
+
+test.
+a
+only
+is
+This
+
+test.
+a
+is
+This
+Swap at: 0
+Swap at: 1
+Swap at: 3
+Swap at: 4
+Swap at: 5
+Swap at: 6
+Swap at: 2
+Swap at: 3
+Swap at: 4
+Swap at: 5
+Swap at: 1
+Swap at: 2
+Swap at: 3
+Swap at: 4
+Swap at: 1
+Swap at: 0
++-------------------------------+
+|    Testcase Variable Dump:    |
++-------------------------------+
+-32768 -17 0 10 13 100 1234 4096

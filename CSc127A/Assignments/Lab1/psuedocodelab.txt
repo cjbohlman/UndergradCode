@@ -1,0 +1,21 @@
+//Declare strings/variables
+Declare string sName
+Declare integer motherAge, childAge, bornAge
+
+//ask and input name
+Display "What is your name?"
+Input sName
+
+//ask and input mother's age
+Display sName+ ", what is your age?"
+Input motherAge
+
+//ask and input child's age
+Display "What is your child's age?"
+Input childAge
+
+//calculate age mother was when child was born
+bornAge = motherAge - childAge
+
+//display what age mother was when child was born
+Display "You were " bornAge " when your child was born"

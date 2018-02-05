@@ -1,0 +1,32 @@
+Chris Bohlman, CSC 127B-001B
+Homework #1 - Calendar Date
+Instructor: Patrick Homer
+TA: Nathaniel Hendrix
+Due Date: 9/2/2016
+
+
+The program was written in order to make an object with a month value, day 
+value, and year value, which would be stored as a CalendarDate object. Next,
+the date would have gone through a mutator method, allowing it to fit under 
+several parameters that could have altered the values in the month, day, and 
+year variables. This was done through several if statements for each of the 
+parameters.There were getter methods for the day, month and year ints, and there was a 
+method to return the month as a string in order to have the month int's name 
+produced when called. This was again done through several if statements. A toString 
+method allowed for each of the day and year ints and the month as a string to 
+be returned as one singular string for other objects. A boolean equals method 
+checked to see if an "otherDate" object and the defined parameters returned the 
+same date (used to see if there wrre any bugs in coding). And finally, a tomorrow 
+method was written, so when it was called, allowed for the given date parameters 
+to return a date that was one day after the given parameters. This was done 
+through extensive if statements accounting for every case of changing days, 
+months, and years.
+
+I used JDE 8.0_91, wrote the program through Dr. Java, and was on a Windows
+10 laptop. To test this program, the CalendarDate class must be in the same 
+folder as that testable program.
+
+No known bugs exist, as I have extensively tested and gone to TAs for 
+help, but pardon if the code is messy. As I took 127A elsewhere, I was 
+not at all familar with much of Java, classes, objects, and methods, 
+so this code is my attempt at learning all of these. Whew.

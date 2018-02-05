@@ -1,0 +1,20 @@
+apropos xargs
+ls usr/include -l
+mkdir my_dir
+cd ../x/y/z
+cd /a/b/x/y/z
+cp orig copy
+cp -R dir1 dir2
+ls -d c*
+ls -l *.c
+ls > files
+diff expected actual
+wc -l asdf
+grep 'HELLO' records
+grep 'HELLO' records | wc -l
+cat foo bar
+mv old new
+mv misplaced put_it_here
+rm badfile
+echo 'I love penguins' > opinion
+ln -s /home/kobus/vapor_dir

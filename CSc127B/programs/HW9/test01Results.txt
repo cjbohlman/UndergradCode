@@ -1,0 +1,107 @@
+
+Booklist after reading test01.txt:
+
+Asimov's Mysteries
+Chindit War, The: Stilwell, Wingate, And The Campaign In Burma, 1944
+Classical Dynamics Of Particles And Systems
+Dawn's Early Light, The
+Geometry, Relativity And The Fourth Dimension
+Here Comes Snoopy
+Mexican War, The
+Renegades of Pern, The
+VAX: Assembly Language And Architecture
+Way of The Pilgrim
+You've Done It Again, Charlie Brown
+
+
+Processing commands from test01.commands
+
+PRINT-TITLES
+Asimov's Mysteries
+Chindit War, The: Stilwell, Wingate, And The Campaign In Burma, 1944
+Classical Dynamics Of Particles And Systems
+Dawn's Early Light, The
+Geometry, Relativity And The Fourth Dimension
+Here Comes Snoopy
+Mexican War, The
+Renegades of Pern, The
+VAX: Assembly Language And Architecture
+Way of The Pilgrim
+You've Done It Again, Charlie Brown
+
+ADD
+ADDED: Physics Investigations
+PRINT-TITLES
+Asimov's Mysteries
+Chindit War, The: Stilwell, Wingate, And The Campaign In Burma, 1944
+Classical Dynamics Of Particles And Systems
+Dawn's Early Light, The
+Geometry, Relativity And The Fourth Dimension
+Here Comes Snoopy
+Mexican War, The
+Physics Investigations
+Renegades of Pern, The
+VAX: Assembly Language And Architecture
+Way of The Pilgrim
+You've Done It Again, Charlie Brown
+
+ADD
+ADDED: Bicentennial Man And Other Stories, The
+ADD
+ADDED: Hitchhiker's Guide To The Galaxy, The
+PRINT-TITLES
+Asimov's Mysteries
+Bicentennial Man And Other Stories, The
+Chindit War, The: Stilwell, Wingate, And The Campaign In Burma, 1944
+Classical Dynamics Of Particles And Systems
+Dawn's Early Light, The
+Geometry, Relativity And The Fourth Dimension
+Here Comes Snoopy
+Hitchhiker's Guide To The Galaxy, The
+Mexican War, The
+Physics Investigations
+Renegades of Pern, The
+VAX: Assembly Language And Architecture
+Way of The Pilgrim
+You've Done It Again, Charlie Brown
+
+TITLE
+FOUND: Dawn's Early Light, The
+TITLE
+NOT FOUND: Facts About The Presidents
+DELETE-TITLE
+DELETED Geometry, Relativity And The Fourth Dimension
+PRINT-TITLES
+Asimov's Mysteries
+Bicentennial Man And Other Stories, The
+Chindit War, The: Stilwell, Wingate, And The Campaign In Burma, 1944
+Classical Dynamics Of Particles And Systems
+Dawn's Early Light, The
+Here Comes Snoopy
+Hitchhiker's Guide To The Galaxy, The
+Mexican War, The
+Physics Investigations
+Renegades of Pern, The
+VAX: Assembly Language And Architecture
+Way of The Pilgrim
+You've Done It Again, Charlie Brown
+
+DELETE-TITLE
+NOT FOUND Hitchhiker's Guide
+
+Booklist after processing commands from test01.commands:
+
+Asimov's Mysteries
+Bicentennial Man And Other Stories, The
+Chindit War, The: Stilwell, Wingate, And The Campaign In Burma, 1944
+Classical Dynamics Of Particles And Systems
+Dawn's Early Light, The
+Here Comes Snoopy
+Hitchhiker's Guide To The Galaxy, The
+Mexican War, The
+Physics Investigations
+Renegades of Pern, The
+VAX: Assembly Language And Architecture
+Way of The Pilgrim
+You've Done It Again, Charlie Brown
+

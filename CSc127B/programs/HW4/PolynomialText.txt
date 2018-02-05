@@ -1,0 +1,32 @@
+Chris Bohlman, CSC 127B-001B
+Homework #4 - Polynomial
+Instructor: Patrick Homer
+TA: Nathaniel Hendrix
+Due Date: 9/23/2016
+
+
+The program was written in order to make a Polynomial object that was 
+made up of an array of term objects, and each term object had an exponent and coefficient. 
+The Polynomial class had many methods, including:
+one that added a term based off of a coefficient and exponent argument
+one that sorted terms
+one that replicate the polynomial object into a new object
+one that made all positive coefficients negative or all negative coefficients positive
+one that compared the equality of two polynomial objects
+one that added a polynomial object into another object
+one that checked if the array was full
+one that checked if the array was empty
+one that returned how many terms with nonzero coefficients there were
+one that multipled each coefficient with scalar s
+one that return the coeffcient of whatever term had exponent e
+one that evaluated the polynomial with a given number
+one that returned the polynomial object as a string
+These methods all helped to edit the data and provide a through look at arrays of objects.
+
+I used JDE 8.0_91, wrote the program through Dr. Java, and was on a Windows
+10 laptop. To test this program, the Polynomial and Term class must be in the same 
+folder as Program4.
+
+No known bugs exist, as I spent much time writing this. However, edge cases are
+probably going to mess me up again, which is unfortunate, as I think I have more than enough
+tests to test everything.

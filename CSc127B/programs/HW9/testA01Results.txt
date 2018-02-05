@@ -1,0 +1,96 @@
+
+Booklist after reading testA01.txt:
+
+C Programming Language, The
+   Kernighan, Brian W.
+   Ritchie, Dennis M.
+Five Fates
+   Anderson, Poul
+   Dickson, Gordon R.
+   Ellison, Harlan
+   Herbert, Frank
+   Laumer, Keith
+Flashing Swords! #5: Demons And Daggers
+   Carter, Lin
+Introduction To Assembler Language Programming
+   Feingold, Carl
+Man Who Walked Through Time, The
+   Fletcher, Colin
+More Growing Up Catholic
+   Davis, Richard
+   Kelly, Maureen
+   Meara, Mary
+   Stone, Jeffrey
+Pollinators Of Eden, The
+   Boyd, John
+Voyager In Night
+   Cherryh, C. J.
+War On The Nile: Britain, Egypt And The Sudan, 1882-1898
+   Barthorp, Michael
+
+
+Processing commands from testA01.commands
+
+PRINT-TITLES
+C Programming Language, The
+Five Fates
+Flashing Swords! #5: Demons And Daggers
+Introduction To Assembler Language Programming
+Man Who Walked Through Time, The
+More Growing Up Catholic
+Pollinators Of Eden, The
+Voyager In Night
+War On The Nile: Britain, Egypt And The Sudan, 1882-1898
+
+TITLE-AUTHORS
+FOUND: Five Fates
+   Anderson, Poul
+   Dickson, Gordon R.
+   Ellison, Harlan
+   Herbert, Frank
+   Laumer, Keith
+TITLE
+FOUND: Five Fates
+TITLE-AUTHORS
+NOT FOUND: Four Fates
+TITLE-ADD-AUTHOR
+FOUND Five Fates
+ADDED AUTHOR    Lester I. McCann
+DELETE-TITLE
+DELETED More Growing Up Catholic
+PRINT-TITLES
+C Programming Language, The
+Five Fates
+Flashing Swords! #5: Demons And Daggers
+Introduction To Assembler Language Programming
+Man Who Walked Through Time, The
+Pollinators Of Eden, The
+Voyager In Night
+War On The Nile: Britain, Egypt And The Sudan, 1882-1898
+
+
+Booklist after processing commands from testA01.commands:
+
+C Programming Language, The
+   Kernighan, Brian W.
+   Ritchie, Dennis M.
+Five Fates
+   Anderson, Poul
+   Dickson, Gordon R.
+   Ellison, Harlan
+   Herbert, Frank
+   Laumer, Keith
+   Lester I. McCann
+Flashing Swords! #5: Demons And Daggers
+   Carter, Lin
+Introduction To Assembler Language Programming
+   Feingold, Carl
+Man Who Walked Through Time, The
+   Fletcher, Colin
+Pollinators Of Eden, The
+   Boyd, John
+Voyager In Night
+   Cherryh, C. J.
+War On The Nile: Britain, Egypt And The Sudan, 1882-1898
+   Barthorp, Michael
+

@@ -1,0 +1,5 @@
+public class TicketGenerator implements TicketGeneratable {
+  
+  public int NONE_ISSUED = -1;
+  boolean anyIssued = false;
+  int nextNumber;

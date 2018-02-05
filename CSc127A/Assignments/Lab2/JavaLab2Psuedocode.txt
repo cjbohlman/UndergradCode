@@ -1,0 +1,28 @@
+module main ()
+
+Display "what is the name of the cookie?"
+Input cookieName
+
+Display "Does" cookieName " contain chocolate?"
+Input containsChocolate
+
+Display "Does" cookieName " contain gluten?"
+Input containsGluten
+
+Display "Does" cookieName " contain peanut butter?"
+Input containsPeanutButter
+
+If containsGluten==Yes Then(
+	Display "I'm sorry, I can't eat " cookieName
+	)
+
+Else If conatinsChocolate==yes OR containsPeanutButter=yes Then(
+	Display "Thank you, I love " cookieName
+	)
+
+Else (
+	Display "I'm sorry, I can't eat " cookieName
+	)
+End If
+
+End module

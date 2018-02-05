@@ -1,0 +1,27 @@
+class MeasuringCupSet
+{
+    final int MAX_CUPS = 10;
+    int numberOfCups;
+    MeasuringCup[] set;
+
+    public MeasuringCupSet ()
+    {
+        // Stub
+    }
+
+    public int getOccupancy()
+    {
+        return numberOfCups;
+    }
+
+    public MeasuringCup getCup(int index)
+    {
+        return null;  // Stub
+    }
+
+    public void addACup(MeasuringCup cup)
+    {
+        // Stub
+    }
+
+} // MeasuringCupSet

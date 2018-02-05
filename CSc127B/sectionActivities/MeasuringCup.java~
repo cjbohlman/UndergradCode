@@ -1,0 +1,21 @@
+
+class MeasuringCup
+{
+    Fraction capacity;
+
+    public MeasuringCup (int numerator, int denominator)
+    {
+        capacity = new Fraction(numerator, denominator);
+    }
+
+    public int getNumerator()
+    {
+        return -1; // Stub
+    }
+
+    public int getDenominator()
+    {
+        return -1; // Stub
+    }
+
+} // MeasuringCup

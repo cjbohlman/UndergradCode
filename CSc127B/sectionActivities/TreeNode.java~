@@ -1,0 +1,19 @@
+public class TreeNode<E>
+{
+   private E data;
+   private TreeNode<E> leftChild;
+   private TreeNode<E> rightChild;
+
+   // Constructor
+   public TreeNode( E myData )
+   {
+      setData(myData);
+      setLeftChild(null);
+      setRightChild(null);
+   } // Constructor
+
+   // getData, setData methods
+   // getLeftChild,  setLeftChild  methods
+   // getRightChild, setRightChild methods
+
+} // TreeNode class

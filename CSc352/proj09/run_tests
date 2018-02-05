@@ -1,0 +1,43 @@
+rm -f MAKE_MALLOC_FAIL; ./mymake testcases/dfmjlf jioddfn
+
+rm -f MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01
+
+rm -f MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 random
+
+rm -f MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 crash.o
+
+echo "1" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+echo "2" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+echo "3" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+echo "4" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+echo "5" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+echo "6" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+echo "7" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test01 spellcheck
+
+rm -f MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test02 spellcheck
+
+rm -f MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test03 spellcheck
+
+echo "2" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test05 spellcheck
+
+echo "5" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+echo "7" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+echo "9" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+echo "18" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+echo "20" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+echo "13" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+echo "16" > MAKE_MALLOC_FAIL; ./mymake testcases/makefile_test06 spellcheck
+
+rm -f MAKE_MALLOC_FAIL

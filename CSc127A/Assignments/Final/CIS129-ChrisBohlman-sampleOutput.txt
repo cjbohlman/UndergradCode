@@ -1,0 +1,17 @@
+Sample Output
+
+Input	
+14,20,22
+
+Output
+The number in the top circle is 6.0
+The number in the left circle is 8.0
+The number in the right circle is 14.0
+Here is the filled in chart: 
+         (6.0)
+        /    \ 
+      [14.0]  [20.0]
+      /        \ 
+   (8.0)--[22.0]--(14.0)
+
+___________________________

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# File: test_code
+# Author: Chris Bohlman
+# Purpose: checks if directory and executables exist, and then iterates through the test cases by opening up each one at a time, reading them in, and using diff to compare files
+
+ex_prog=/home/cs352/spring17/Assignments/proj06/ex_anagrams2
+prog=./anagrams2
+tests=./testcases
+
+#does the test case directory exist?
+if [ ! -d "$tests" ]; then
+	>&2 echo Unable to change to testcase directory
+	exit 1
+fi 
+
+#does our executable exist?
+if [ ! -f "$prog" ]; then
+        >&2 echo Cannot execute the test executable
+        exit 1
+fi
+
+#does the other executable exist?
+if [ ! -f "$ex_prog" ]; then
+        >&2 echo Cannot execute the reference executable
+        exit 1
+fi
+
+#iterate through test cases
+files=`ls ${tests}`
+for X in ${files} ; do
+	`cp ${tests}/$X ./`
+	$prog <$X > my.out 2> my.err
+	$ex_prog <$X > ref.out 2> ref.err
+	if diff -q my.out ref.out > /dev/null; then
+		echo "*** testcase: "${X}" [ PASSED ]"
+	else
+		echo "*** testcase: "${X}" [ FAILED : stdout has diff ]" 
+	fi
+	`rm $X`
+done

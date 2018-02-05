@@ -1,0 +1,40 @@
+/*Apt	Rent	Name
+x	x	x
+Apt1	300	Jane Doe
+Apt2	400	John Deere
+Apt3	250	Jane Smith
+Apt4	500	John Smith
+Apt5	1000	Dwayne "The Rock" Johnson */
+
+//Constant for parallel array size
+Constant Integer size = 5
+Constant Integer monthSize = 12
+
+//Create array for Apt #
+Declare String aptNumber[size] = "Apt 1", "Apt 2", "Apt 3", "Apt 4", "Apt 5"
+
+
+//Create array for rent
+Declare string rentAmount[size] = "300", "400", "250", "500", "1000"
+
+//Create array for names
+Declare string name[size] = "Jane Doe", "John Deere", "Jane Smith", "John Smith", "Dwayne 'The Rock' Johnson"
+
+//Create array for months
+Declare string months[monthSize] = "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+
+//Variabe to use as loop counter
+Declare Integer index1
+Declare Integer index2
+
+//Instructions
+Display "This program generates rent slips and shit"
+
+For index1 = 0 to size-1 (
+	For index2 = 0 to monthSize-1 (
+		Display "--------------------------------------------"
+		Display name[index1], "," aptNumber[index1] months[index2]," rent due: $", rentAmount[index1], " on ", months[index2]," 1st."
+		Display "Late fees will be collected on ", months[index2],"."
+		Display "--------------------------------------------"
+	)
+}

@@ -1,0 +1,33 @@
+module main ()
+
+Integer MAGIC_NUMBER = 9
+String   sName
+Integer  numberGuessed
+Integer  numberTries = 1
+
+Display "What is your name?"
+Input sName
+      
+Display sName", what number do you guess between 0 and 10?"
+Input numberGuessed
+    
+while numberGuessed != MAGIC_NUMBER&&numberTries < 4 
+	If numberGuessed > MAGIC_NUMBER Then 
+		Display numberGuessed " is too high."
+	else
+		Display numberGuessed " is too low."
+	
+	Display "Let’s try again: What number do you guess between 0 and 10?"
+	Input numberGuessed
+	numberTries = numberTries + 1
+end while
+      
+while numberTries ==4 AND numberGuessed != MAGIC_NUMBER 
+        Display sName", you ran out of guesses. Sorry!"
+        break
+end while
+     
+while numberGuessed == MAGIC_NUMBER 
+	Display "Congratulations! You guessed the correct number in " numberTries " tries."
+        break
+end while
