@@ -1,0 +1,111 @@
+package jacobi;
+
+public class jacobiWorker extends Thread {
+	
+	public jacobiWorker() {
+		
+	}
+	
+	public void run() {
+		
+	}
+	
+	void jacobi(float* grid, float* new, int lo, int hi, int threadNum) {
+		while (1) {
+			
+			int i, j;
+			iterations[threadNum]++;
+			if (iterations[threadNum] >= 7000)
+			{
+				fprintf(stderr,"Reached max amount of iterations, exiting\n");
+				exit(1);
+			}
+			
+			// compute values for all interior points
+			for (i = lo; i <= hi ; i++)
+			{
+				for (j = 1; j <= size; j++) 
+				{
+					*(new + i*n + j) = (*(grid + (i-1)*n + j) + *(grid + (i+1)*n + j) + *(grid + i*n + (j-1)) + *(grid + i*n + (j+1))) * .25;
+				}
+			}
+			
+			//barrier after updating values
+			for (i = 0; i < stages; i++) {	
+				int power = (int) pow(2,i);
+				// V op on other thread
+				int result = sem_post(stageArr[i][(power+threadNum)%(numThreads)]);
+				if ( result != 0 ) {
+					fprintf(stderr, "post failed, yikes\n");
+					exit(1);
+				}
+				
+				// P op on self
+				result = sem_wait(stageArr[i][threadNum]);
+				if ( result != 0 ) {
+					fprintf(stderr, "wait failed, yikes\n");
+					exit(1);
+				}
+			}
+			
+			float maxDiff = 0;
+			for (i = lo; i <= hi ; i++)
+	        {
+	            for (j = 1; j <= size; j++)
+	            {
+					maxDiff = fmaxf(maxDiff, fabs(*(new + i*n + j) - *(grid + i*n + j)));
+				}
+			}
+			maxDiffArr[threadNum] = maxDiff;		
+			
+			//barrier after max diff
+			for (i = 0; i < stages; i++) {	
+				int power = (int) pow(2,i);
+				// V op on other thread
+				int result = sem_post(stageArr[i][(power+threadNum)%(numThreads)]);
+				if ( result != 0 ) {
+					fprintf(stderr, "post failed, yikes\n");
+					exit(1);
+				}
+				
+				// P op on self
+				result = sem_wait(stageArr[i][threadNum]);
+				if ( result != 0 ) {
+					fprintf(stderr, "wait failed, yikes\n");
+					exit(1);
+				}
+			}
+			
+			for (i = 0; i < numThreads; i++)
+			{
+				if (maxDiffArr[i] < epsilon) 
+				{
+					return;
+				}
+			}
+			
+			if (threadNum == 0) {
+				swapGrids(&new,&grid);
+			}
+			
+			
+			//barrier after swap
+			for (i = 0; i < stages; i++) {	
+				int power = (int) pow(2,i);
+				// V op on other thread
+				int result = sem_post(stageArr[i][(power+threadNum)%(numThreads)]);
+				if ( result != 0 ) {
+					fprintf(stderr, "post failed, yikes\n");
+					exit(1);
+				}
+				
+				// P op on self
+				result = sem_wait(stageArr[i][threadNum]);
+				if ( result != 0 ) {
+					fprintf(stderr, "wait failed, yikes\n");
+					exit(1);
+				}
+			}
+		}
+	}
+}

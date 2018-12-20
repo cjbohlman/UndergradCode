@@ -1,0 +1,16 @@
+package jacobi;
+
+public class jacobiWorker extends Thread {
+	
+	public jacobiWorker(float[] grid, float[] newGrid, ) {
+		
+	}
+	
+	public void run() {
+		
+	}
+	
+	void jacobi(float* grid, float* new, int lo, int hi, int threadNum) {
+		
+	}
+}

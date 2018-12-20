@@ -1,0 +1,7 @@
+all: jacobiC jacobiJava
+
+jacobiC: jacobi.c
+	gcc -Wall -g -o jacobi -std=gnu99 jacobi.c -lm -lpthread
+
+jacobiJava: MainClass.java jacobi.java
+	javac MainClass.java jacobi.java

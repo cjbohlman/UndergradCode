@@ -1,0 +1,10 @@
+all: sortProcess sortThread sortSeq
+
+sortProcess: sortProcess.c
+	gcc -Wall -o sortProcess -std=gnu99 sortProcess.c
+
+sortThread: sortThread.c
+	gcc -Wall -o sortThread -std=gnu99 sortThread.c -lpthread
+
+sortSeq: sortSeq.c
+	gcc -Wall -o sortSeq -std=gnu99 sortSeq.c

@@ -1,0 +1,297 @@
+package jacobi;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.concurrent.Semaphore;
+
+public class jacobi {
+
+	   /* used for timing */   
+	static long startTime;
+	static long endTime;
+
+	public static int size;
+	public static int n;
+	public static int numThreads;
+	public static float left;
+	public static float top;
+	public static float right;
+	public static float bottom;
+	public static float epsilon;
+	static float[] grid;
+	static float[] newGrid;
+	static int[] iterations;
+	static Semaphore[][] stageArr = new Semaphore[5][32];
+	static int stages;
+	int exitThreadNumber;
+	float[] maxDiffArr = new float[32];
+	
+	private class endpoints {
+		public int low;
+		public int hi;
+	}
+	
+	public static endpoints[] endpointArray;
+	
+	public static jacobiWorker[] threadArr;
+
+	void swapGrids(float[] grid1, float[] grid2) {
+		for (int i = 0; i < grid1.length; i++) {
+			float temp = grid1[i];
+			grid1[i] = grid2[i];
+			grid2[i] = temp;
+		}
+	}
+
+	
+	public class jacobiWorker extends Thread {
+		private int lo;
+		private int hi;
+		private int threadNum;
+		
+		public jacobiWorker(int lo, int hi, int threadNum) {
+			this.lo = lo;
+			this.hi = hi;
+			this.threadNum = threadNum;
+		}
+		
+		public void run() {
+			while (true) {
+				
+				int i, j;
+				iterations[threadNum]++;
+				if (iterations[threadNum] >= 7000)
+				{
+					System.err.println("Reached max amount of iterations, exiting");
+					System.exit(1);
+				}
+				
+				// compute values for all interior points
+				for (i = lo; i <= hi ; i++)
+				{
+					for (j = 1; j <= size; j++) 
+					{
+						newGrid[i*n + j] = (float) ((grid[(i-1)*n + j] + grid[(i+1)*n + j] + grid[i*n + (j-1)] + grid[i*n + (j+1)]) * .25);
+					}
+				}
+				
+				//barrier after updating values
+				for (i = 0; i < stages; i++) {	
+					int power = (int) Math.pow(2,i);
+					// V op on other thread
+					stageArr[i][(power+threadNum)%(numThreads)].release();
+					
+					// P op on self
+					try {
+						stageArr[i][threadNum].acquire();
+					} catch (InterruptedException e) {};
+				}
+				
+				float maxDiff = 0;
+				for (i = lo; i <= hi ; i++)
+		        {
+		            for (j = 1; j <= size; j++)
+		            {
+						maxDiff = Math.max(maxDiff, Math.abs(newGrid[i*n + j] - grid[i*n + j]));
+					}
+				}
+				
+				maxDiffArr[threadNum] = maxDiff;		
+				
+				//barrier after updating values
+				for (i = 0; i < stages; i++) {	
+					int power = (int) Math.pow(2,i);
+					// V op on other thread
+					stageArr[i][(power+threadNum)%(numThreads)].release();
+					
+					// P op on self
+					try {
+						stageArr[i][threadNum].acquire();
+					} catch (InterruptedException e) {};
+				}
+				
+				for (i = 0; i < numThreads; i++)
+				{
+					if (maxDiffArr[i] < epsilon) 
+					{
+						return;
+					}
+				}
+				
+				if (threadNum == 0) {
+					swapGrids(newGrid,grid);
+				}
+				
+				
+				//barrier after updating values
+				for (i = 0; i < stages; i++) {	
+					int power = (int) Math.pow(2,i);
+					// V op on other thread
+					stageArr[i][(power+threadNum)%(numThreads)].release();
+					
+					// P op on self
+					try {
+						stageArr[i][threadNum].acquire();
+					} catch (InterruptedException e) {};
+				}
+			}
+		}
+	}
+
+
+	public jacobi(String[] args) {
+		if (args.length == 2)
+		{
+			size = Integer.parseInt(args[0]);
+	        n = size + 2;
+	        numThreads = Integer.parseInt(args[1]);
+	        left = 10;
+	        top = 10;
+	        right = 800;
+	        bottom = 800;
+	        epsilon = (float) .1;
+		} else if (args.length == 7)
+		{
+			size = Integer.parseInt(args[0]);
+	        n = size + 2;
+	        numThreads = Integer.parseInt(args[1]);
+	        left = Float.parseFloat(args[2]);
+	        top = Float.parseFloat(args[3]);
+	        right = Float.parseFloat(args[4]);
+	        bottom = Float.parseFloat(args[5]);
+	        epsilon = Float.parseFloat(args[6]);
+		} else
+		{
+			System.err.println("Incorrect number of arguments, please try again");
+			System.exit(0);
+		}
+		
+		int i, j, x, y;
+
+		// set endpoints arr
+		endpointArray = new endpoints[numThreads+1];
+		for (i = 0; i < numThreads+1; i++) {
+			endpointArray[i] = new endpoints();
+		}
+		endpointArray[0].low = 0;
+		endpointArray[0].hi = 0;
+		if (size%numThreads == 0)
+		{
+			int incrementer = size/numThreads;
+			int startPoint = 1;
+			for (i = 1; i <= numThreads; i++) 
+			{
+				endpointArray[i].low=startPoint;
+				endpointArray[i].hi=startPoint+incrementer - 1;
+				startPoint += incrementer;
+			}
+		} else
+		{
+			float comparator = (float)(size%numThreads)/(float)numThreads;
+			int incrementer = size/numThreads;
+			if (comparator > .5)
+				incrementer++;
+			int startPoint = 1;
+			for (i = 1; i <= numThreads - 1; i++) 
+			{
+				endpointArray[i].low=startPoint;
+				endpointArray[i].hi=startPoint+incrementer - 1;
+				startPoint += incrementer;
+			}
+			endpointArray[numThreads].low = startPoint;
+			endpointArray[numThreads].hi = size;
+		}
+		
+		grid = new float[n*n];
+		newGrid = new float[n*n];
+		iterations = new int[numThreads];
+		
+		// set boundaries of grid
+		for (x = 1; x <= size; x++)
+		{
+			grid[x] = top;
+			grid[x*n] = left;
+			grid[(x+1)*n - 1] = right;
+			grid[n*(n-1) + x] = bottom;
+		}
+		
+		// set boundaries of new grid
+		for (x = 1; x <= size; x++)
+		{
+			newGrid[x] = grid[x];
+			newGrid[x*n] =  grid[x*n];
+			newGrid[(x+1)*n - 1] = grid[(x+1)*n - 1];
+			newGrid[n*(n-1) + x] = grid[n*(n-1) + x];
+	    }
+		
+		stages = (int) Math.ceil(Math.log(numThreads)/Math.log(2));
+		
+		// init semaphores
+		for (x = 0; x < stages; x++) {
+			for (y = 0; y < numThreads; y++) {
+				stageArr[x][y] = new Semaphore(0);
+	
+			}
+		}
+		
+		threadArr = new jacobiWorker[numThreads];
+			
+		startTime = System.currentTimeMillis();
+		
+		// make threads
+		for (i = 0; i < numThreads; i++) {
+			int low = endpointArray[i+1].low;
+			int high = endpointArray[i+1].hi;
+			threadArr[i] = new jacobiWorker(low, high, i);
+			threadArr[i].start();
+		}
+
+		// join threads
+		for (i = 0; i < numThreads; i++) {
+			try {
+				threadArr[i].join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		endTime = System.currentTimeMillis();
+		System.out.println("runtime: "+(endTime  - startTime)+" seconds);");
+		
+		// print info and write to file
+		System.out.println("numProcs: "+numThreads);
+		
+		for (i = 0; i < numThreads; i++) {
+			System.out.println("Iterations: "+iterations[i]);
+		}
+		
+		try{
+		    PrintWriter writer = new PrintWriter("selfJacobiResults.txt", "UTF-8");
+		    writer.println("Grid: "+size+" x "+size);
+		    writer.println("numProcs: "+numThreads);
+		    writer.println("Left: "+left);
+			writer.println("Top: "+top);
+			writer.println("Right: "+right);
+			writer.println("Bottom: "+bottom);
+			writer.println("Epsilon: "+epsilon);
+			writer.println("runtime: "+(endTime  - startTime)+" seconds);");
+			
+			for (i = 0; i < n ; i++)
+		    {
+				for (j = 0; j < n; j++)
+		        {
+		            writer.printf("%0.4f ",grid[i*n + j]);
+		        }
+				writer.println();
+		    }
+			
+			for (i = 0; i < numThreads; i++) {
+				writer.println("Iterations: "+iterations[i]);
+			}
+		    writer.close();
+		} catch (IOException e) {
+		   e.printStackTrace();
+		}
+	}
+}

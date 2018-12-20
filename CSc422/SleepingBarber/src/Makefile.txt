@@ -1,0 +1,2 @@
+Barber: Barber.java CustomerGenerator.java Customer.java BarberMonitor.java
+	javac Barber.java CustomerGenerator.java Customer.java BarberMonitor.java
